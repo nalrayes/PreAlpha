@@ -6,6 +6,7 @@ public class MoveScript : MonoBehaviour {
 
 	GameObject jinn;
 	GameObject summoner;
+	GameObject posessed;
 
 	GameObject jinnWeaponUp;
 	GameObject jinnWeaponDown;
@@ -19,6 +20,7 @@ public class MoveScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		jinn = GameObject.Find ("Circle");
+		jinn.tag = "jinn";
 		jinn.SetActive(false);
 
 		summoner = GameObject.Find("Square");
@@ -47,6 +49,10 @@ public class MoveScript : MonoBehaviour {
 
 		KeyCode lastDirection = KeyCode.UpArrow;
 		if (jinn.activeSelf) {
+			if (posessed != null) {
+				jinn.SetActive (false);
+				jinn = posessed;
+			}
 			timer += 1;
 			summonerSpeed = 2.0f;
 			if (Input.GetKeyDown(KeyCode.Space)) {
@@ -99,6 +105,7 @@ public class MoveScript : MonoBehaviour {
 						break;
 					}
 					lastWeapon.SetActive (true);
+
 				}
 			}
 				
