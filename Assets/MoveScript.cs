@@ -15,6 +15,8 @@ public class MoveScript : MonoBehaviour {
 
 	GameObject lastWeapon;
 
+	KeyCode lastDirection;
+
 	float timer;
 	float FRAME_LIMIT;
 	// Use this for initialization
@@ -40,6 +42,8 @@ public class MoveScript : MonoBehaviour {
 		timer = 0;
 
 		FRAME_LIMIT = 20;
+
+		lastDirection = KeyCode.UpArrow;
 	}
 
 	// Update is called once per frame
@@ -47,12 +51,7 @@ public class MoveScript : MonoBehaviour {
 		float jinnSpeed = 4.0f;
 		float summonerSpeed;
 
-		KeyCode lastDirection = KeyCode.UpArrow;
 		if (jinn.activeSelf) {
-			if (posessed != null) {
-				jinn.SetActive (false);
-				jinn = posessed;
-			}
 			timer += 1;
 			summonerSpeed = 2.0f;
 			if (Input.GetKeyDown(KeyCode.Space)) {

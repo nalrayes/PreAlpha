@@ -10,11 +10,16 @@ public class EnemyScript : MonoBehaviour {
 
 	GameObject jinn;
 
+	int TO_KILL = 2;
+	int hits;
+
 
 	// Use this for initialization
 	void Start () {
 		timer = 0;
 		posessionSpeed = 2.0f;
+
+		hits = 0;
 	}
 
 	// Update is called once per frame
@@ -51,13 +56,23 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
-		if (collisionInfo.gameObject.CompareTag("jinn")) {
+		if (collisionInfo.gameObject.CompareTag("weapon")) {
+			this.GetComponent<SpriteRenderer> ().color = Color.red;
+
+			hits += 1;
+			if (hits > TO_KILL) {
+				this.gameObject.SetActive (false);
+			}
+		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
+			hits += 1;
+
 			posessed = true;
 			this.GetComponent<SpriteRenderer> ().color = Color.gray;
 			jinn = collisionInfo.gameObject;
 
 			jinn.SetActive (false);
 			timer = 0;
+
 
 		}
 	}
