@@ -83,28 +83,48 @@ public class MoveScript : MonoBehaviour {
 			if (Input.GetKey (KeyCode.Q)) {
 				lastWeapon.SetActive (false);
 				timer = 0;
+				
 				if (timer > FRAME_LIMIT) {
 					timer = 0;
 				} else {
 					switch (lastDirection) {
 					case KeyCode.DownArrow:
 						lastWeapon = jinnWeaponDown;
+
 						break;
 					case KeyCode.UpArrow:
 						lastWeapon = jinnWeaponUp;
+
 						break;
 					case KeyCode.LeftArrow:
 						lastWeapon = jinnWeaponLeft;
+
 						break;
 					case KeyCode.RightArrow:
 						lastWeapon = jinnWeaponRight;
+
 						break;
 					default:
 						lastWeapon = jinnWeaponUp;
+					
 						break;
 					}
 					lastWeapon.SetActive (true);
 
+					switch (lastWeapon) {
+					case jinnWeaponUp:
+						jinnWeaponUp.transform.localPosition.Set (0, 0.7, 0);
+						break;
+					case jinnWeaponDown:
+						jinnWeaponDown.transform.localPosition.Set (0, -0.7, 0);
+						break;
+					case jinnWeaponLeft:
+						jinnWeaponLeft.transform.localPosition.Set (-0.7, 0, 0);
+						break;
+					case jinnWeaponRight:
+						jinnWeaponRight.transform.localPosition.Set (0.7, 0, 0);
+						break;
+					}
 				}
 			}
 				
