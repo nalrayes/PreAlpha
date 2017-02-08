@@ -15,6 +15,8 @@ public class MoveScript : MonoBehaviour {
 
 	GameObject lastWeapon;
 
+	JinnScript jinnScript;
+
 	KeyCode lastDirection;
 
 	float timer;
@@ -24,6 +26,8 @@ public class MoveScript : MonoBehaviour {
 		jinn = GameObject.Find ("Circle");
 		jinn.tag = "jinn";
 		jinn.SetActive(false);
+		jinnScript = jinn.GetComponent<JinnScript> ();
+//		jinnScript.posessing = false;
 
 		summoner = GameObject.Find("Square");
 
@@ -54,23 +58,23 @@ public class MoveScript : MonoBehaviour {
 		if (jinn.activeSelf) {
 			timer += 1;
 			summonerSpeed = 2.0f;
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				jinn.SetActive(false);
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				jinn.SetActive (false);
 				summonerSpeed = 4.0f;
 			}
-			if (Input.GetKey(KeyCode.RightArrow)){
+			if (Input.GetKey (KeyCode.RightArrow)) {
 				lastDirection = KeyCode.RightArrow;
 				jinn.transform.position += Vector3.right * jinnSpeed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.LeftArrow)){
+			if (Input.GetKey (KeyCode.LeftArrow)) {
 				lastDirection = KeyCode.LeftArrow;
-				jinn.transform.position += Vector3.left* jinnSpeed * Time.deltaTime;
+				jinn.transform.position += Vector3.left * jinnSpeed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.UpArrow)){
+			if (Input.GetKey (KeyCode.UpArrow)) {
 				lastDirection = KeyCode.UpArrow;
 				jinn.transform.position += Vector3.up * jinnSpeed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.DownArrow)){
+			if (Input.GetKey (KeyCode.DownArrow)) {
 				lastDirection = KeyCode.DownArrow;
 				jinn.transform.position += Vector3.down * jinnSpeed * Time.deltaTime;
 			}
@@ -111,23 +115,12 @@ public class MoveScript : MonoBehaviour {
 					}
 					lastWeapon.SetActive (true);
 
-					switch (lastWeapon) {
-					case jinnWeaponUp:
-						jinnWeaponUp.transform.localPosition.Set (0, 0.7, 0);
-						break;
-					case jinnWeaponDown:
-						jinnWeaponDown.transform.localPosition.Set (0, -0.7, 0);
-						break;
-					case jinnWeaponLeft:
-						jinnWeaponLeft.transform.localPosition.Set (-0.7, 0, 0);
-						break;
-					case jinnWeaponRight:
-						jinnWeaponRight.transform.localPosition.Set (0.7, 0, 0);
-						break;
-					}
 				}
 			}
 				
+		} else if (jinnScript.posessing) {
+			summonerSpeed = 0f;
+
 		} else {
 			summonerSpeed = 4.0f;
 			lastWeapon.SetActive (false);

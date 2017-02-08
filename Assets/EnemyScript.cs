@@ -9,6 +9,7 @@ public class EnemyScript : MonoBehaviour {
 	float posessionSpeed;
 
 	GameObject jinn;
+	JinnScript jinnScript;
 
 	int TO_KILL = 2;
 	int hits;
@@ -46,6 +47,7 @@ public class EnemyScript : MonoBehaviour {
 			if (timer > 150) {
 				timer = 0;
 				posessed = false;
+				jinnScript.posessing = false;
 				jinn.SetActive (true);
 				Vector3 rightOf = new Vector3 (1.2f, 0f);
 				jinn.transform.position = this.transform.position + rightOf;
@@ -61,14 +63,19 @@ public class EnemyScript : MonoBehaviour {
 
 			hits += 1;
 			if (hits > TO_KILL) {
+				//ded
 				this.gameObject.SetActive (false);
 			}
 		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
 			hits += 1;
 
 			posessed = true;
+
 			this.GetComponent<SpriteRenderer> ().color = Color.gray;
 			jinn = collisionInfo.gameObject;
+			jinnScript = jinn.GetComponent<JinnScript> ();
+			jinnScript.posessing = true;
+
 
 			jinn.SetActive (false);
 			timer = 0;
