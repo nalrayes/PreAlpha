@@ -7,53 +7,48 @@ public class RangedAttack : MonoBehaviour {
 	public GameObject projectilePrefab;
 
 	JinnScript jinnScript;
+	MoveScript moveScript;
 	public GameObject jinn;
 	GameObject summoner;
 
 	public Vector2 direction;
 
-	float projectileSpeed;
 	// Use this for initialization
 	void Start () {
-		summoner = this.gameObject;
-		jinn = summoner.GetComponent<MoveScript> ().jinn;
-		jinnScript = jinn.GetComponent<JinnScript> ();
+		summoner = GameObject.FindGameObjectWithTag("summoner");
+		moveScript = GetComponent<MoveScript> ();
+		Debug.Log (moveScript);
 
-		projectileSpeed = 10f;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			// Let's move towards the mouse.
-			Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 toMouseDir = ((Vector2)mouseWorldPos-(Vector2)transform.position).normalized;
-
-			GameObject newProjectile = Instantiate(projectilePrefab) as GameObject;
-			newProjectile.transform.position = transform.position;
-			newProjectile.GetComponent<ProjectileScript>().directionToMove = toMouseDir;
-		}
-		if (false) {
+//		if (Input.GetKeyDown(KeyCode.R)) {
+//			// Let's move towards the mouse.
+//			Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+//			Vector2 toMouseDir = ((Vector2)mouseWorldPos-(Vector2)transform.position).normalized;
+//
+//			GameObject newProjectile = Instantiate(projectilePrefab) as GameObject;
+//			newProjectile.transform.position = transform.position;
+//			newProjectile.GetComponent<ProjectileScript>().directionToMove = (Vector3)toMouseDir;
+//		}
+		if (!moveScript.getSummoning()) {
 			if (Input.GetKey(KeyCode.DownArrow)) {
-				GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
-				direction = Vector2.down;
+				GameObject projectile = Instantiate (projectilePrefab) as GameObject;
 				projectile.transform.position = this.transform.position;
-				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
+				projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.down;
 			} else if (Input.GetKey(KeyCode.UpArrow)) {
 				GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
-				direction = Vector2.up;
 				projectile.transform.position = this.transform.position;
-				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
+				projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.up;;
 			} else if (Input.GetKey(KeyCode.LeftArrow)) {
 				GameObject projectile = Instantiate (projectilePrefab) as GameObject;
-				direction = Vector2.left;
 				projectile.transform.position = this.transform.position;
-				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
+				projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.left;;
 			} else if (Input.GetKey(KeyCode.RightArrow)) {
 				GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
-				direction = Vector2.right;
 				projectile.transform.position = this.transform.position;
-				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
+				projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.right;
 			}
 
 		}

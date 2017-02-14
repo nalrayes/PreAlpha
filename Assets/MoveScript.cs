@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour {
 
-	public GameObject jinn;
+	GameObject jinn;
+	public bool summoning = false;
 	GameObject summoner;
 	GameObject posessed;
 
@@ -26,9 +27,10 @@ public class MoveScript : MonoBehaviour {
 	void Start () {
 		jinn = GameObject.Find ("Circle");
 		jinn.tag = "jinn";
+//		this.GetComponent<RangedAttack> ().jinn = jinn;
 		jinn.SetActive(false);
 		jinnScript = jinn.GetComponent<JinnScript> ();
-//		jinnScript.posessing = false;
+		jinnScript.posessing = false;
 
 		summoner = GameObject.Find("Square");
 
@@ -62,6 +64,7 @@ public class MoveScript : MonoBehaviour {
 			summonerSpeed = 2.0f;
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				jinn.SetActive (false);
+				summoning = false;
 				summonerSpeed = 4.0f;
 			}
 			if (Input.GetKey (KeyCode.RightArrow)) {
@@ -127,6 +130,7 @@ public class MoveScript : MonoBehaviour {
 			summonerSpeed = 4.0f;
 			lastWeapon.SetActive (false);
 			if (Input.GetKeyDown(KeyCode.Space)) {
+				summoning = true;
 				jinn.SetActive(true);
 				Vector3 rightOf = new Vector3 (1.2f, 0f);
 				jinn.transform.position = summoner.transform.position + rightOf;
@@ -145,5 +149,9 @@ public class MoveScript : MonoBehaviour {
 		if (Input.GetKey(KeyCode.S)){
 			summoner.transform.position += Vector3.down * summonerSpeed * Time.deltaTime;
 		}
+	}
+
+	public bool getSummoning() {
+		return summoning;
 	}
 }
