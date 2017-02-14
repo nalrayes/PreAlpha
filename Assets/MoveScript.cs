@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour {
 
-	GameObject jinn;
+	public GameObject jinn;
 	GameObject summoner;
 	GameObject posessed;
 
@@ -21,6 +21,7 @@ public class MoveScript : MonoBehaviour {
 
 	float timer;
 	float FRAME_LIMIT;
+
 	// Use this for initialization
 	void Start () {
 		jinn = GameObject.Find ("Circle");
@@ -30,6 +31,7 @@ public class MoveScript : MonoBehaviour {
 //		jinnScript.posessing = false;
 
 		summoner = GameObject.Find("Square");
+
 
 		jinnWeaponUp = jinn.transform.Find("WeaponUp").gameObject;
 		jinnWeaponDown = jinn.transform.Find("WeaponDown").gameObject;
