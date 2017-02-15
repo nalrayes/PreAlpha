@@ -10,7 +10,7 @@ public class ProjectileScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 //		summoner = GameObject.FindGameObjectWithTag ("summoner");
-		projectileSpeed = 5f;
+		projectileSpeed = 8f;
 	}
 
 	// Update is called once per frame
@@ -21,7 +21,7 @@ public class ProjectileScript : MonoBehaviour {
 		transform.position += (Vector3)directionToMove * projectileSpeed * Time.deltaTime;
 	}
 
-//	void OnCollisionEnter2D(Collision2D collisionInfo) {
-////		Destroy(gameObject);
-//	}
+	void OnCollisionEnter2D(Collision2D collisionInfo) {
+		Destroy(gameObject);
+	}
 }
