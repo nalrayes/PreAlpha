@@ -21,7 +21,9 @@ public class MoveScript : MonoBehaviour {
 	KeyCode lastDirection;
 
 	float timer;
+	float summoningTimer;
 	float FRAME_LIMIT;
+	int SUMMONING_LIMIT;
 
 	// Use this for initialization
 	void Start () {
@@ -48,8 +50,11 @@ public class MoveScript : MonoBehaviour {
 		lastWeapon = jinnWeaponUp;
 
 		timer = 0;
+		summoningTimer = 0;
 
 		FRAME_LIMIT = 20;
+
+		SUMMONING_LIMIT = int.MaxValue;
 
 		lastDirection = KeyCode.UpArrow;
 	}
@@ -61,6 +66,7 @@ public class MoveScript : MonoBehaviour {
 
 		if (jinn.activeSelf) {
 			timer += 1;
+			summoningTimer += 1;
 			summonerSpeed = 2.0f;
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				jinn.SetActive (false);
@@ -122,9 +128,15 @@ public class MoveScript : MonoBehaviour {
 
 				}
 			}
+
+			if (summoningTimer > SUMMONING_LIMIT) {
+				summoningTimer = 0;
+				jinn.SetActive (false);
+			}
 				
 		} else if (jinnScript.posessing) {
 			summonerSpeed = 0f;
+			summoningTimer += 2;
 
 		} else {
 			summonerSpeed = 4.0f;

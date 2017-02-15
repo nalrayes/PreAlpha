@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour {
 	bool playerVisible;
 	Vector3 originalPosition;
 
-	float speed = 5f;
+	float speed = 4f;
 	// Use this for initialization
 
 	GameObject summoner;
@@ -19,10 +19,11 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
-//		moveToPlayer ();
-		if (Vector3.Distance (summoner.transform.position, transform.position) <= 10f) {
-			moveToPlayer ();
+//		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
+		if (summoner.activeSelf) {
+			if (Vector3.Distance (summoner.transform.position, transform.position) <= 10f) {
+				moveToPlayer ();
+			}
 		}
 	}
 	/*
@@ -31,17 +32,16 @@ public class EnemyAI : MonoBehaviour {
 	 * look for player, if not found return to original position
 	 */
 	void moveToPlayer () {
-		transform.position = Vector3.MoveTowards (transform.position, summoner.transform.position, 2*Time.deltaTime);
+		transform.position = Vector3.MoveTowards (transform.position, summoner.transform.position, speed*Time.deltaTime);
 		// if within range, attack
-		if (Vector3.Distance (summoner.transform.position, transform.position) > 2) {
-			//attack
+		if (Vector3.Distance (summoner.transform.position, transform.position) < 1) {
+			summoner.SetActive (false);
 		}
 	}
 
-	void moveTo(Vector3 location) {
-		/*
-		 * get difference vector
-		 * move that difference
-		 */
+	void onCollisionEnter2D(Collision2D collided) {
+		if (collided.gameObject.CompareTag("summoner")){
+			summoner.SetActive(false);
+		}
 	}
 }
