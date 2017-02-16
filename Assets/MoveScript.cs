@@ -54,7 +54,7 @@ public class MoveScript : MonoBehaviour {
 
 		FRAME_LIMIT = 20;
 
-		SUMMONING_LIMIT = int.MaxValue;
+		SUMMONING_LIMIT = 160;
 
 		lastDirection = KeyCode.UpArrow;
 	}
