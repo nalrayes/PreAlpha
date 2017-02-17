@@ -62,7 +62,7 @@ public class EnemyScript : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().color = Color.red;
 
 			hits += 1;
-			if (hits > TO_KILL) {
+			if (hits >= TO_KILL) {
 				//ded
 				this.gameObject.SetActive (false);
 			}

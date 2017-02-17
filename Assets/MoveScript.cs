@@ -6,6 +6,7 @@ public class MoveScript : MonoBehaviour {
 
 	GameObject jinn;
 	public bool summoning = false;
+	bool canSummon;
 	GameObject summoner;
 	GameObject posessed;
 
@@ -24,13 +25,12 @@ public class MoveScript : MonoBehaviour {
 	float summoningTimer;
 	float FRAME_LIMIT;
 	int SUMMONING_LIMIT;
+	int SUMMONING_COOLDOWN;
 
 	// Use this for initialization
 	void Start () {
 		jinn = GameObject.Find ("Circle");
-		jinn.tag = "jinn";
-//		this.GetComponent<RangedAttack> ().jinn = jinn;
-//		jinn.SetActive(false);
+		jinn.SetActive(false);
 		jinnScript = jinn.GetComponent<JinnScript> ();
 		jinnScript.posessing = false;
 
@@ -42,19 +42,22 @@ public class MoveScript : MonoBehaviour {
 		jinnWeaponLeft = jinn.transform.Find("WeaponLeft").gameObject;
 		jinnWeaponRight = jinn.transform.Find("WeaponRight").gameObject;
 
-//		jinnWeaponUp.SetActive (false);
-//		jinnWeaponDown.SetActive (false);
-//		jinnWeaponLeft.SetActive (false);
-//		jinnWeaponRight.SetActive (false);
+		jinnWeaponUp.SetActive (false);
+		jinnWeaponDown.SetActive (false);
+		jinnWeaponLeft.SetActive (false);
+		jinnWeaponRight.SetActive (false);
 
 		lastWeapon = jinnWeaponUp;
 
 		timer = 0;
 		summoningTimer = 0;
+		canSummon = true;
 
 		FRAME_LIMIT = 20;
 
-		SUMMONING_LIMIT = 160;
+		SUMMONING_LIMIT = 200;
+
+		SUMMONING_COOLDOWN = 100;
 
 		lastDirection = KeyCode.UpArrow;
 	}
@@ -63,6 +66,8 @@ public class MoveScript : MonoBehaviour {
 	void Update () {
 		float jinnSpeed = 4.0f;
 		float summonerSpeed;
+		Debug.Log (summoningTimer);
+
 
 		if (jinn.activeSelf) {
 			timer += 1;
@@ -131,6 +136,7 @@ public class MoveScript : MonoBehaviour {
 
 			if (summoningTimer > SUMMONING_LIMIT) {
 				summoningTimer = 0;
+				canSummon = false;
 				jinn.SetActive (false);
 			}
 				
@@ -141,12 +147,20 @@ public class MoveScript : MonoBehaviour {
 		} else {
 			summonerSpeed = 4.0f;
 			lastWeapon.SetActive (false);
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				summoning = true;
-				jinn.SetActive(true);
-				Vector3 rightOf = new Vector3 (1.2f, 0f);
-				jinn.transform.position = summoner.transform.position + rightOf;
-				jinn.transform.rotation = summoner.transform.rotation;
+			if (canSummon) {
+				if (Input.GetKeyDown (KeyCode.Space)) {
+					summoning = true;
+					jinn.SetActive (true);
+					Vector3 rightOf = new Vector3 (1.2f, 0f);
+					jinn.transform.position = summoner.transform.position + rightOf;
+					jinn.transform.rotation = summoner.transform.rotation;
+				}
+			} else {
+				summoningTimer += 1;
+				if (summoningTimer > SUMMONING_COOLDOWN) {
+					canSummon = true;
+					summoningTimer = 0;
+				}
 			}
 		}
 		if (Input.GetKey(KeyCode.D)){
