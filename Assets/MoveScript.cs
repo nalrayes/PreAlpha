@@ -30,7 +30,7 @@ public class MoveScript : MonoBehaviour {
 		jinn = GameObject.Find ("Circle");
 		jinn.tag = "jinn";
 //		this.GetComponent<RangedAttack> ().jinn = jinn;
-		jinn.SetActive(false);
+//		jinn.SetActive(false);
 		jinnScript = jinn.GetComponent<JinnScript> ();
 		jinnScript.posessing = false;
 
@@ -42,10 +42,10 @@ public class MoveScript : MonoBehaviour {
 		jinnWeaponLeft = jinn.transform.Find("WeaponLeft").gameObject;
 		jinnWeaponRight = jinn.transform.Find("WeaponRight").gameObject;
 
-		jinnWeaponUp.SetActive (false);
-		jinnWeaponDown.SetActive (false);
-		jinnWeaponLeft.SetActive (false);
-		jinnWeaponRight.SetActive (false);
+//		jinnWeaponUp.SetActive (false);
+//		jinnWeaponDown.SetActive (false);
+//		jinnWeaponLeft.SetActive (false);
+//		jinnWeaponRight.SetActive (false);
 
 		lastWeapon = jinnWeaponUp;
 
