@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour {
 	bool playerVisible;
 	Vector3 originalPosition;
 
-	float speed = 4f;
+	float speed = 2.5f;
 	// Use this for initialization
 
 	GameObject summoner;
@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame	
 	void Update () {
-//		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
+		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
 		if (summoner.activeSelf) {
 			float dist = Vector3.Distance (summoner.transform.position, transform.position);
 			if (dist <= 10f && dist > 1.5f) {
@@ -32,6 +32,7 @@ public class EnemyAI : MonoBehaviour {
 
 				weaponScript.attackCondition = false;
 			} else if (dist <= 1.5f) {
+				
 				weaponScript.attackCondition = true;
 
 				Vector3 difference = summoner.transform.position - transform.position;

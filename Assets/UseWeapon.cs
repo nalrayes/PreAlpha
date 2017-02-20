@@ -33,20 +33,17 @@ public class UseWeapon : MonoBehaviour {
 
 		lastDirection = KeyCode.UpArrow;
 
+		attackCondition = false;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (attackCondition) {
 			lastWeapon.SetActive (false);
-			timer = 0;
 
 			if (timer > FRAME_LIMIT) {
 				lastWeapon.SetActive (false);
-				timer = 0;
-			}
-
-			if (timer > FRAME_LIMIT) {
 				timer = 0;
 			} else {
 				switch (lastDirection) {
@@ -74,6 +71,9 @@ public class UseWeapon : MonoBehaviour {
 				lastWeapon.SetActive (true);
 
 			}
+		} else {
+			timer = 0;
+			lastWeapon.SetActive (false);
 		}
 		
 	}

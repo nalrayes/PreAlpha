@@ -66,7 +66,7 @@ public class MoveScript : MonoBehaviour {
 	void Update () {
 		float jinnSpeed = 4.0f;
 		float summonerSpeed;
-		Debug.Log (summoningTimer);
+//		Debug.Log (summoningTimer);
 
 
 		if (jinn.activeSelf) {
@@ -138,6 +138,7 @@ public class MoveScript : MonoBehaviour {
 				summoningTimer = 0;
 				canSummon = false;
 				jinn.SetActive (false);
+				summoning = false;
 			}
 				
 		} else if (jinnScript.posessing) {
