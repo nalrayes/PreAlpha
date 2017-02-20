@@ -9,7 +9,7 @@ public class SwitchScripy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		oldColor = this.GetComponent<SpriteRenderer> ().color;
-		
+		door = GameObject.Find ("Door");
 	}
 	
 	// Update is called once per frame
