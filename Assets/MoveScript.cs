@@ -37,10 +37,10 @@ public class MoveScript : MonoBehaviour {
 		summoner = GameObject.Find("Square");
 
 
-		jinnWeaponUp = jinn.transform.Find("WeaponUp").gameObject;
-		jinnWeaponDown = jinn.transform.Find("WeaponDown").gameObject;
-		jinnWeaponLeft = jinn.transform.Find("WeaponLeft").gameObject;
-		jinnWeaponRight = jinn.transform.Find("WeaponRight").gameObject;
+		jinnWeaponUp = jinn.transform.FindChild("WeaponUp").gameObject;
+		jinnWeaponDown = jinn.transform.FindChild("WeaponDown").gameObject;
+		jinnWeaponLeft = jinn.transform.FindChild("WeaponLeft").gameObject;
+		jinnWeaponRight = jinn.transform.FindChild("WeaponRight").gameObject;
 
 		jinnWeaponUp.SetActive (false);
 		jinnWeaponDown.SetActive (false);

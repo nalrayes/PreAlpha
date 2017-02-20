@@ -11,18 +11,41 @@ public class EnemyAI : MonoBehaviour {
 	// Use this for initialization
 
 	GameObject summoner;
+
+	UseWeapon weaponScript;
+
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag ("summoner");
 		playerVisible = false;
 		originalPosition = this.transform.position;
+
+		weaponScript = this.GetComponent<UseWeapon> ();
 	}
 	
-	// Update is called once per frame
+	// Update is called once per frame	
 	void Update () {
 //		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
 		if (summoner.activeSelf) {
-			if (Vector3.Distance (summoner.transform.position, transform.position) <= 10f) {
+			float dist = Vector3.Distance (summoner.transform.position, transform.position);
+			if (dist <= 10f && dist > 1.5f) {
 				moveToPlayer ();
+
+				weaponScript.attackCondition = false;
+			} else if (dist <= 1.5f) {
+				weaponScript.attackCondition = true;
+
+				Vector3 difference = summoner.transform.position - transform.position;
+				difference.x = Mathf.Round (difference.x);
+				difference.y = Mathf.Round (difference.y);
+				if (difference == Vector3.up) {
+					weaponScript.lastDirection = KeyCode.UpArrow;
+				} else if (difference == Vector3.down) {
+					weaponScript.lastDirection = KeyCode.DownArrow;
+				} else if (difference == Vector3.left) {
+					weaponScript.lastDirection = KeyCode.LeftArrow;
+				} else if (difference == Vector3.right) {
+					weaponScript.lastDirection = KeyCode.RightArrow;
+				}
 			}
 		}
 	}
@@ -34,14 +57,11 @@ public class EnemyAI : MonoBehaviour {
 	void moveToPlayer () {
 		transform.position = Vector3.MoveTowards (transform.position, summoner.transform.position, speed*Time.deltaTime);
 		// if within range, attack
-		if (Vector3.Distance (summoner.transform.position, transform.position) < 1) {
-			summoner.SetActive (false);
-		}
 	}
 
 	void onCollisionEnter2D(Collision2D collided) {
 		if (collided.gameObject.CompareTag("summoner")){
-			summoner.SetActive(false);
+//			summoner.SetActive(false);
 		}
 	}
 }
