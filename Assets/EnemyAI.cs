@@ -12,6 +12,10 @@ public class EnemyAI : MonoBehaviour {
 
 	GameObject summoner;
 
+	float timer = 0;
+	float LIMIT = 20;
+	float LIMIT2 = 25;
+
 	UseWeapon weaponScript;
 
 	void Start () {
@@ -21,17 +25,29 @@ public class EnemyAI : MonoBehaviour {
 
 		weaponScript = this.GetComponent<UseWeapon> ();
 	}
+		
 	
 	// Update is called once per frame	
 	void Update () {
-		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
+//		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
 		if (summoner.activeSelf) {
+			timer++;
 			float dist = Vector3.Distance (summoner.transform.position, transform.position);
 			if (dist <= 10f && dist > 1.5f) {
 				moveToPlayer ();
-
-				weaponScript.attackCondition = false;
+				if (timer > LIMIT) {
+					weaponScript.attackCondition = false;
+					if (timer > LIMIT2) 
+						timer = 0;
+				}
 			} else if (dist <= 1.5f) {
+				if (timer > LIMIT) {
+					if (timer > LIMIT2) {
+						timer = 0;
+					}
+					weaponScript.attackCondition = false;
+					return;
+				}
 				
 				weaponScript.attackCondition = true;
 
@@ -46,6 +62,13 @@ public class EnemyAI : MonoBehaviour {
 					weaponScript.lastDirection = KeyCode.LeftArrow;
 				} else if (difference == Vector3.right) {
 					weaponScript.lastDirection = KeyCode.RightArrow;
+				}
+			} else {
+				if (timer > LIMIT) {
+					weaponScript.attackCondition = false;
+					if (timer > LIMIT2) {
+						timer = 0;
+					}
 				}
 			}
 		}

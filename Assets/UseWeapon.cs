@@ -39,6 +39,7 @@ public class UseWeapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+//		Debug.Log (attackCondition);
 		if (attackCondition) {
 			lastWeapon.SetActive (false);
 
@@ -75,6 +76,7 @@ public class UseWeapon : MonoBehaviour {
 			timer = 0;
 			lastWeapon.SetActive (false);
 		}
+
 		
 	}
 }
