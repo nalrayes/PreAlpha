@@ -6,7 +6,7 @@ public class CameraControl : MonoBehaviour {
 //	Camera cam = this.gameObject.GetComponent<Camera>();	
 	GameObject summoner;
 	public Transform target;
-	public float moveSpeed = 5f;
+	public float moveSpeed = 8f;
 
 	// Use this for initialization
 	void Start () {

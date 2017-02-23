@@ -1,41 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine;	
 
 public class RoomScript : MonoBehaviour {
-	public float maxX, maxY, minX, minY;
-	public Transform roomUp, roomDown, roomLeft, roomRight;
+	const float maxX = 10f, maxY = 4.5f, minX = 10f, minY = 4.5f;
 
 	MoveScript summoner; 
 	// Use this for initialization
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag ("summoner").GetComponent<MoveScript> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		Transform currentTarget = Camera.main.GetComponent<CameraControl> ().target;
-		if (currentTarget != transform)
-			return;
-		Transform nextTarget = transform;
-		Debug.Log (transform.position);
-		if (summoner.transform.position.y > transform.position.y + maxY) {
-			nextTarget = roomUp;
+		bool summonerIsHere = summoner.transform.position.y < transform.position.y + maxY && summoner.transform.position.y > transform.position.y - minY
+		                      && summoner.transform.position.x < transform.position.x + maxX && summoner.transform.position.x > transform.position.x - minX;
+		if (summonerIsHere) {
+			Debug.Log (transform);
+			Camera.main.GetComponent<CameraControl> ().target = transform;
 		}
-		if (summoner.transform.position.y > transform.position.y - minY) {
-			nextTarget = roomDown;
-		}
-		if (summoner.transform.position.x > transform.position.x + maxX) {
-			nextTarget = roomLeft;
-		}
-		if (summoner.transform.position.x > transform.position.x - minX) {
-			nextTarget = roomRight;
-		}
-		
-		if (nextTarget != null) {
-			CameraControl cameraFollow = Camera.main.GetComponent<CameraControl> ();
-			cameraFollow.target = nextTarget;
-		}
-		
 	}
 }
