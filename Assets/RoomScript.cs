@@ -17,7 +17,7 @@ public class RoomScript : MonoBehaviour {
 		bool summonerIsHere = summoner.transform.position.y < transform.position.y + maxY && summoner.transform.position.y > transform.position.y - minY
 		                      && summoner.transform.position.x < transform.position.x + maxX && summoner.transform.position.x > transform.position.x - minX;
 		if (summonerIsHere) {
-			Debug.Log (transform);
+//			Debug.Log (transform);
 			Camera.main.GetComponent<CameraControl> ().target = transform;
 		}
 	}

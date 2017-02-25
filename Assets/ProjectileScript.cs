@@ -22,7 +22,7 @@ public class ProjectileScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
-		Debug.Log ("Collided!");
+//		Debug.Log ("Collided!");
 		Destroy(gameObject);
 	}
 }
