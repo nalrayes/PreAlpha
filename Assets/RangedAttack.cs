@@ -21,7 +21,7 @@ public class RangedAttack : MonoBehaviour {
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag("summoner");
 		moveScript = GetComponent<MoveScript> ();
-		Debug.Log (moveScript);
+//		Debug.Log (moveScript);
 		canAttack = true;
 
 	}
