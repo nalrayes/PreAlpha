@@ -8,6 +8,8 @@ public class AutoRangedAttack : MonoBehaviour {
 
 	public GameObject projectilePrefab;
 
+	public bool itemGet = false;
+
 	// Use this for initialization
 	void Start () {
 		timer = 0;
@@ -15,13 +17,15 @@ public class AutoRangedAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer++;
-		if (timer == 30) {
-//			Debug.Log (timer);
-			GameObject projectile = Instantiate (projectilePrefab) as GameObject;
-			projectile.transform.position = this.transform.position + (Vector3) direction;
-			projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
-			timer = 0;
+		if (!itemGet) {
+			timer++;
+			if (timer == 30) {
+				//			Debug.Log (timer);
+				GameObject projectile = Instantiate (projectilePrefab) as GameObject;
+				projectile.transform.position = this.transform.position + (Vector3)direction;
+				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
+				timer = 0;
+			}
 		}
 	}
 }
