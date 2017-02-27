@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-	bool posessed = false;
+	public bool posessed = false;
 	float timer;
 	float posessionSpeed;
 

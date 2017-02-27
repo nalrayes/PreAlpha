@@ -7,7 +7,7 @@ public class JinnScript : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		transform.Find ("Weapons").gameObject.SetActive (false);
+//		transform.Find ("Weapons").gameObject.SetActive (false);
 		posessing = false;
 	}
 	

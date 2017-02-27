@@ -33,35 +33,37 @@ public class EnemyAI : MonoBehaviour {
 		if (summoner.activeSelf) {
 			timer++;
 			float dist = Vector3.Distance (summoner.transform.position, transform.position);
-			if (dist <= 10f && dist > 1.5f) {
-				moveToPlayer ();
-				if (timer > LIMIT) {
-					weaponScript.attackCondition = false;
-					if (timer > LIMIT2) 
-						timer = 0;
-				}
-			} else if (dist <= 1.5f) {
-				if (timer > LIMIT) {
-					if (timer > LIMIT2) {
-						timer = 0;
+			if (!gameObject.GetComponent<EnemyScript>().posessed) {
+				if (dist <= 10f && dist > 1.5f) {
+					moveToPlayer ();
+					if (timer > LIMIT) {
+						weaponScript.attackCondition = false;
+						if (timer > LIMIT2)
+							timer = 0;
 					}
-					weaponScript.attackCondition = false;
-					return;
-				}
-				
-				weaponScript.attackCondition = true;
+				} else if (dist <= 1.5f) {
+					if (timer > LIMIT) {
+						if (timer > LIMIT2) {
+							timer = 0;
+						}
+						weaponScript.attackCondition = false;
+						return;
+					}
+					
+					weaponScript.attackCondition = true;
 
-				Vector3 difference = summoner.transform.position - transform.position;
-				difference.x = Mathf.Round (difference.x);
-				difference.y = Mathf.Round (difference.y);
-				if (difference == Vector3.up) {
-					weaponScript.lastDirection = KeyCode.UpArrow;
-				} else if (difference == Vector3.down) {
-					weaponScript.lastDirection = KeyCode.DownArrow;
-				} else if (difference == Vector3.left) {
-					weaponScript.lastDirection = KeyCode.LeftArrow;
-				} else if (difference == Vector3.right) {
-					weaponScript.lastDirection = KeyCode.RightArrow;
+					Vector3 difference = summoner.transform.position - transform.position;
+					difference.x = Mathf.Round (difference.x);
+					difference.y = Mathf.Round (difference.y);
+					if (difference == Vector3.up) {
+						weaponScript.lastDirection = KeyCode.UpArrow;
+					} else if (difference == Vector3.down) {
+						weaponScript.lastDirection = KeyCode.DownArrow;
+					} else if (difference == Vector3.left) {
+						weaponScript.lastDirection = KeyCode.LeftArrow;
+					} else if (difference == Vector3.right) {
+						weaponScript.lastDirection = KeyCode.RightArrow;
+					}
 				}
 			} else {
 				if (timer > LIMIT) {
