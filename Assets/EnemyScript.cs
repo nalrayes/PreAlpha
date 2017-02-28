@@ -67,6 +67,8 @@ public class EnemyScript : MonoBehaviour {
 				this.gameObject.SetActive (false);
 			}
 		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
+			GameObject.FindGameObjectWithTag("summoner").gameObject.GetComponent<PropertyScript> ().changeMana (-1);
+
 			hits += 1;
 
 			posessed = true;

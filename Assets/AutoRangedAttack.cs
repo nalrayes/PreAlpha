@@ -20,8 +20,10 @@ public class AutoRangedAttack : MonoBehaviour {
 		if (!itemGet) {
 			timer++;
 			if (timer == 30) {
-				//			Debug.Log (timer);
 				GameObject projectile = Instantiate (projectilePrefab) as GameObject;
+				projectile.tag = "enemy weapon";
+				projectile.layer = 14;
+//				Debug.Log (projectile.layer);
 				projectile.transform.position = this.transform.position + (Vector3)direction;
 				projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
 				timer = 0;

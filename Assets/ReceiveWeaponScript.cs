@@ -23,13 +23,13 @@ public class ReceiveWeaponScript : MonoBehaviour {
 			GameObject.Find ("AutoTurret").gameObject.GetComponent<AutoRangedAttack> ().itemGet = true;
 
 			GameObject newEnemy1 = Instantiate (enemyPrefab) as GameObject;
-			newEnemy1.transform.position = new Vector3 (17, 4, 0); 
+			newEnemy1.transform.position = new Vector3 (16, -2, 10); 
 
 			GameObject newEnemy2 = Instantiate (enemyPrefab) as GameObject;
-			newEnemy2.transform.position = new Vector3 (20, 4, 0);
+			newEnemy2.transform.position = new Vector3 (16, 2, 10);
 
 			GameObject newEnemy3 = Instantiate (enemyPrefab) as GameObject;
-			newEnemy3.transform.position = new Vector3 (23, 4, 0);
+			newEnemy3.transform.position = new Vector3 (16, 0, 10);
 
 			Debug.Log (newEnemy1);
 			Debug.Log (newEnemy1.transform.position);

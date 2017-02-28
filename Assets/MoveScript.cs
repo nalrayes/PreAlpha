@@ -144,7 +144,6 @@ public class MoveScript : MonoBehaviour {
 		} else if (jinnScript.posessing) {
 			summonerSpeed = 0f;
 			summoningTimer += 2;
-
 		} else {
 			summonerSpeed = 4.0f;
 			lastWeapon.SetActive (false);
@@ -152,6 +151,7 @@ public class MoveScript : MonoBehaviour {
 				if (Input.GetKeyDown (KeyCode.Space)) {
 					summoning = true;
 					jinn.SetActive (true);
+					gameObject.GetComponent<PropertyScript> ().changeMana (-1);
 					Vector3 rightOf = new Vector3 (1.2f, 0f);
 					jinn.transform.position = summoner.transform.position + rightOf;
 					jinn.transform.rotation = summoner.transform.rotation;

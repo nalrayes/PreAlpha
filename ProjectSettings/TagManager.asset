@@ -9,6 +9,8 @@ TagManager:
   - weapon
   - summoner
   - enemy weapon
+  - health
+  - mana
   layers:
   - Default
   - TransparentFX
@@ -24,7 +26,7 @@ TagManager:
   - WeaponLayer
   - ProjectileLayer
   - SummonerLayer
-  - 
+  - EnemyProjectileLayer
   - 
   - 
   - 

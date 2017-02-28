@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58540610968487316}
   - component: {fileID: 114020526197012398}
   - component: {fileID: 50054611567280216}
+  - component: {fileID: 114612565300226704}
   m_Layer: 12
   m_Name: projectile
   m_TagString: weapon
@@ -90,6 +91,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionToMove: {x: 0, y: 0}
+--- !u!114 &114612565300226704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538539870786292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df4ae34dae0f4dfca9a0f2f92d0a28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!212 &212036149922974534
 SpriteRenderer:
   m_ObjectHideFlags: 1
