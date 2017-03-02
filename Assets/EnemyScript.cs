@@ -14,6 +14,8 @@ public class EnemyScript : MonoBehaviour {
 	int TO_KILL = 2;
 	int hits;
 
+	PropertyScript summonerProps;
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,8 @@ public class EnemyScript : MonoBehaviour {
 		posessionSpeed = 2.0f;
 
 		hits = 0;
+
+		summonerProps = GameObject.FindGameObjectWithTag ("summoner").gameObject.GetComponent<PropertyScript> ();
 	}
 
 	// Update is called once per frame
@@ -65,9 +69,11 @@ public class EnemyScript : MonoBehaviour {
 			if (hits >= TO_KILL) {
 				//ded
 				this.gameObject.SetActive (false);
+				summonerProps.changeMana (3);
+				summonerProps.changeHealth (5);
 			}
 		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
-			GameObject.FindGameObjectWithTag("summoner").gameObject.GetComponent<PropertyScript> ().changeMana (-1);
+			summonerProps.changeMana (-1);
 
 			hits += 1;
 

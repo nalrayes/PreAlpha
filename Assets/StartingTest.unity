@@ -3827,4 +3827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_HEALTH: 20
-  MAX_MANA: 5
+  MAX_MANA: 10
+  currentMana: 0
+  currentHealth: 0

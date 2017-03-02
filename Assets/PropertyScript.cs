@@ -7,8 +7,8 @@ public class PropertyScript : MonoBehaviour {
 	public int MAX_HEALTH;
 	public int MAX_MANA;
 
-	int currentMana;
-	int currentHealth;
+	public int currentMana;
+	public int currentHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -26,12 +26,24 @@ public class PropertyScript : MonoBehaviour {
 	}
 
 	public void changeHealth(int amt) {
-		currentHealth += amt;
+		if (currentHealth + amt > MAX_HEALTH) {
+			currentHealth = MAX_HEALTH;
+		} else if (currentHealth + amt < 0) {
+			currentHealth = 0;
+		} else {
+			currentHealth += amt;
+		}
 		printall ();
 	}
 
 	public void changeMana(int amt) {
-		currentMana += amt;
+		if (currentMana + amt > MAX_MANA) {
+			currentMana = MAX_MANA;
+		} else if (currentMana + amt < 0) {
+			currentMana = 0;
+		} else {
+			currentMana += amt;
+		}
 		printall ();
 	}
 

@@ -64,6 +64,9 @@ public class EnemyAI : MonoBehaviour {
 					} else if (difference == Vector3.right) {
 						weaponScript.lastDirection = KeyCode.RightArrow;
 					}
+				} else {
+					//return to original position
+					transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed*Time.deltaTime);
 				}
 			} else {
 				if (timer > LIMIT) {

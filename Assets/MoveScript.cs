@@ -72,6 +72,12 @@ public class MoveScript : MonoBehaviour {
 		if (jinn.activeSelf) {
 			timer += 1;
 			summoningTimer += 1;
+			if (summoningTimer % 50 == 0)
+				gameObject.GetComponent<PropertyScript> ().changeMana (-1);
+			if (gameObject.GetComponent<PropertyScript> ().currentMana < 0) {
+				jinn.SetActive (false);
+				return;
+			}
 			summonerSpeed = 2.0f;
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				jinn.SetActive (false);
@@ -142,6 +148,13 @@ public class MoveScript : MonoBehaviour {
 			}
 				
 		} else if (jinnScript.posessing) {
+			if (summoningTimer % 20 == 0)
+			if (summoningTimer % 30 == 0)
+				gameObject.GetComponent<PropertyScript> ().changeMana (-1);
+			if (gameObject.GetComponent<PropertyScript> ().currentMana < 0) {
+				jinnScript.posessing = false;
+				return;
+			}
 			summonerSpeed = 0f;
 			summoningTimer += 2;
 		} else {
@@ -149,12 +162,13 @@ public class MoveScript : MonoBehaviour {
 			lastWeapon.SetActive (false);
 			if (canSummon) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
-					summoning = true;
-					jinn.SetActive (true);
-					gameObject.GetComponent<PropertyScript> ().changeMana (-1);
-					Vector3 rightOf = new Vector3 (1.2f, 0f);
-					jinn.transform.position = summoner.transform.position + rightOf;
-					jinn.transform.rotation = summoner.transform.rotation;
+					if (gameObject.GetComponent<PropertyScript>().currentMana > 0) {
+						summoning = true;
+						jinn.SetActive (true);
+						Vector3 rightOf = new Vector3 (1.2f, 0f);
+						jinn.transform.position = summoner.transform.position + rightOf;
+						jinn.transform.rotation = summoner.transform.rotation;
+					}
 				}
 			} else {
 				summoningTimer += 1;
