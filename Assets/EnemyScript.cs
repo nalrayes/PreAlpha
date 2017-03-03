@@ -14,39 +14,74 @@ public class EnemyScript : MonoBehaviour {
 	int TO_KILL = 2;
 	int hits;
 
+	int FRAME_LIMIT = 20;
+//	int attackTimer;
+
+	GameObject lastWeapon;
+	UseWeapon weaponScript;
+
+	public GameObject weaponUp;
+	public GameObject weaponDown;
+	public GameObject weaponLeft;
+	public GameObject weaponRight;
+
+	public KeyCode lastDirection;
+
+
 	PropertyScript summonerProps;
 
 
 	// Use this for initialization
 	void Start () {
 		timer = 0;
+//		attackTimer = 0;
 		posessionSpeed = 2.0f;
 
 		hits = 0;
 
+		weaponScript= gameObject.GetComponent<UseWeapon> ();
+//		weaponUp = weaponScript.weaponUp;
+//		weaponRight = weaponScript.weaponRight;
+//		weaponLeft = weaponScript.weaponLeft;
+//		weaponDown = weaponScript.weaponDown;
+
+		lastWeapon = weaponUp;
+		lastDirection = KeyCode.UpArrow;
+//		Debug.Log (weaponUp);
+//		Debug.Log (weaponDown);
+//		Debug.Log (weaponLeft);
+//		Debug.Log (weaponRight);
 		summonerProps = GameObject.FindGameObjectWithTag ("summoner").gameObject.GetComponent<PropertyScript> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
+//		Debug.Log (weaponUp);
+//		Debug.Log (weaponDown);
+//		Debug.Log (weaponLeft);
+//		Debug.Log (weaponRight);
 		if (posessed) {
 			timer++;
+//			attackTimer++;
 			if (Input.GetKey(KeyCode.RightArrow)){
-				//lastDirection = KeyCode.RightArrow;
+				lastDirection = KeyCode.RightArrow;
 				this.transform.position += Vector3.right * posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.LeftArrow)){
-				//lastDirection = KeyCode.LeftArrow;
+				lastDirection = KeyCode.LeftArrow;
 				this.gameObject.transform.position += Vector3.left* posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.UpArrow)){
-				//lastDirection = KeyCode.UpArrow;
+				lastDirection = KeyCode.UpArrow;
 				this.gameObject.transform.position += Vector3.up * posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.DownArrow)){
-				//lastDirection = KeyCode.DownArrow;
+				lastDirection = KeyCode.DownArrow;
 				this.gameObject.transform.position += Vector3.down * posessionSpeed * Time.deltaTime;
 			}
+			gameObject.GetComponent<UseWeapon>().lastDirection = lastDirection;
+
+
 
 			if (timer > 150) {
 				timer = 0;
