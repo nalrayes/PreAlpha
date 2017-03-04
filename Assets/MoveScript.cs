@@ -55,7 +55,7 @@ public class MoveScript : MonoBehaviour {
 
 		FRAME_LIMIT = 20;
 
-		SUMMONING_LIMIT = 200;
+		SUMMONING_LIMIT = 300;
 
 		SUMMONING_COOLDOWN = 100;
 
@@ -78,7 +78,7 @@ public class MoveScript : MonoBehaviour {
 				jinn.SetActive (false);
 				return;
 			}
-			summonerSpeed = 2.0f;
+			summonerSpeed = 3.0f;
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				jinn.SetActive (false);
 				summoning = false;
@@ -155,7 +155,7 @@ public class MoveScript : MonoBehaviour {
 				jinnScript.posessing = false;
 				return;
 			}
-			summonerSpeed = 0f;
+			summonerSpeed = 1f;
 			summoningTimer += 2;
 		} else {
 			summonerSpeed = 4.0f;
