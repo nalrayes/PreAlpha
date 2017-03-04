@@ -39,7 +39,7 @@ public class SwitchScripy : MonoBehaviour {
 					}
 				}
 			}
-			if (timer > 150 || Input.GetKey(KeyCode.Space)) {
+			if (timer > 150) {
 				timer = 0;
 				posessed = false;
 				jinn.SetActive (true);
