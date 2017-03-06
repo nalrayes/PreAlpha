@@ -18,7 +18,7 @@ public class WallSwitchScript : MonoBehaviour {
 	void Start () {
 		ftimer = 0;
 		originalColor = this.GetComponent<SpriteRenderer> ().color;
-		walls = GameObject.Find ("Walls");
+		walls = GameObject.Find("Walls");
 	}
 
 	// Update is called once per frame
@@ -33,10 +33,10 @@ public class WallSwitchScript : MonoBehaviour {
 					this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);
 				} else {
 					this.GetComponent<SpriteRenderer> ().color = new Color32(180, 180, 30, 255); 
-					if (ftimer > 3) {
+//					if (ftimer > 3) {
 						walls.SetActive (true);
-						ftimer = 0;
-					}
+//						ftimer = 0;
+//					}
 				}
 			}
 			if (timer > 150) {

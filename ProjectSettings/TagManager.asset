@@ -11,6 +11,7 @@ TagManager:
   - enemy weapon
   - health
   - mana
+  - walls
   layers:
   - Default
   - TransparentFX

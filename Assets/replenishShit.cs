@@ -13,8 +13,10 @@ public class replenishShit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (timer == 500) {
+			gameObject.GetComponent<SpriteRenderer> ().color = new Color32 (152, 127, 251, 255);
 			//keep at 500
 		} else {
+			gameObject.GetComponent<SpriteRenderer> ().color = new Color32 (250, 120, 160, 255);
 			timer++;
 		}
 	}
