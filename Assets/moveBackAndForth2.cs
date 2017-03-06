@@ -2,44 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveBackAndForth : MonoBehaviour {
+public class moveBackAndForth2 : MonoBehaviour {
 	public Vector3 direction;
 	Vector3 originalPos;
 
-	bool posessed = false;
+	bool posessed;
+	GameObject jinn;
+
 	int timer = 0;
 	Color32 originalColor;
 	// Use this for initialization
 	void Start () {
 		originalPos = transform.localPosition;
-//		direction = Vector3.up;
-
+		direction = Vector3.down;
+		jinn = GameObject.FindGameObjectWithTag ("jinn");
 		originalColor = gameObject.GetComponent<SpriteRenderer> ().color;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-//		Debug.Log (originalPos.y);
+//		Debug.Log (transform.localPosition.y< -1 * originalPos.y);
 		if (!posessed) {
-			if (direction.y == 1) {
-				if (transform.localPosition.y > -1 * originalPos.y) {
+			if (direction.y == -1) {
+				if (transform.localPosition.y < -1 * originalPos.y) {
 					direction = -1 * direction;
 				}
 			} else {
-				if (transform.localPosition.y < originalPos.y) {
+				if (transform.localPosition.y > originalPos.y) {
 					direction = -1 * direction;
 				}
 			}
 			gameObject.transform.position += 5f * direction * Time.deltaTime;
 		} else {
-		timer++;
-		if (timer > 90) {
-			gameObject.GetComponent<SpriteRenderer> ().color = originalColor;
-			posessed = false;
-			timer = 0;
+			timer++;
+			if (timer > 90) {
+				gameObject.GetComponent<SpriteRenderer> ().color = originalColor;
+				posessed = false;
+				timer = 0;
+			}
 		}
-	}
-
 	}
 
 	void OnCollisionEnter2D(Collision2D info) {

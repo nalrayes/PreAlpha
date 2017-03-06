@@ -23,7 +23,7 @@ public class replenishShit : MonoBehaviour {
 		if (timer == 500) {
 			if (info.gameObject.CompareTag ("summoner")) {
 				info.gameObject.GetComponent<PropertyScript> ().changeMana (5);
-				info.gameObject.GetComponent<PropertyScript> ().changeHealth (10);
+				info.gameObject.GetComponent<PropertyScript> ().changeHealth (5);
 				timer = 0;
 			}
 		}
