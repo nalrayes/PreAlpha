@@ -7,6 +7,7 @@ public class MoveScript : MonoBehaviour {
 	GameObject jinn;
 	public bool walking = false;
 	public bool summoning = false;
+	public int directionValue = 0;
 	bool canSummon;
 	GameObject summoner;
 	GameObject posessed;
@@ -34,7 +35,7 @@ public class MoveScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = this.GetComponent<Animator> ();
-		feetAnim = this.GetComponentInChildren<Animator> ();
+//		feetAnim = this.GetComponentInChildren<Animator> ();
 		jinn = GameObject.Find ("Circle");
 		jinn.SetActive(false);
 		jinnScript = jinn.GetComponent<JinnScript> ();
@@ -188,22 +189,26 @@ public class MoveScript : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D)) {
 			Debug.Log ("D");
 			anim.SetInteger ("direction", 2);
-			feetAnim.SetInteger ("direction", 2);
+			directionValue = 2;
+//			feetAnim.SetInteger ("direction", 2);
 			summoner.transform.position += Vector3.right * summonerSpeed * Time.deltaTime;
 			walking = true;
 		} else if (Input.GetKey (KeyCode.A)) {
 			anim.SetInteger ("direction", -2);
-			feetAnim.SetInteger ("direction", -2);
+			directionValue = -2;
+//			feetAnim.SetInteger ("direction", -2);
 			summoner.transform.position += Vector3.left * summonerSpeed * Time.deltaTime;
 			walking = true;
 		} else if (Input.GetKey (KeyCode.W)) {
 			anim.SetInteger ("direction", 1);
-			feetAnim.SetInteger ("direction", 1);
+			directionValue = 1;
+//			feetAnim.SetInteger ("direction", 1);
 			summoner.transform.position += Vector3.up * summonerSpeed * Time.deltaTime;
 			walking = true;
 		} else if (Input.GetKey (KeyCode.S)) {
 			anim.SetInteger ("direction", -1);
-			feetAnim.SetInteger ("direction", -1);
+			directionValue = -1;
+//			feetAnim.SetInteger ("direction", -1);
 			summoner.transform.position += Vector3.down * summonerSpeed * Time.deltaTime;
 			walking = true;
 		} else {
@@ -212,10 +217,10 @@ public class MoveScript : MonoBehaviour {
 
 		if (walking) {
 			anim.SetBool ("moving", true);
-			feetAnim.SetBool ("moving", true);
+//			feetAnim.SetBool ("moving", true);
 		} else {
 			anim.SetBool("moving", false);
-			feetAnim.SetBool ("moving", false);
+//			feetAnim.SetBool ("moving", false);
 		}
 	}
 
