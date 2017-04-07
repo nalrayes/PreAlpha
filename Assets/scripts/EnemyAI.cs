@@ -65,18 +65,22 @@ public class EnemyAI : MonoBehaviour {
 					difference.y = Mathf.Round (difference.y);
 					if (difference == Vector3.up) {
 						anim.SetInteger ("direction", 1);
+						direction = 1;
 
 						weaponScript.lastDirection = KeyCode.UpArrow;
 					} else if (difference == Vector3.down) {
 						anim.SetInteger ("direction", -1);
+						direction = -1;
 
 						weaponScript.lastDirection = KeyCode.DownArrow;
 					} else if (difference == Vector3.left) {
 						anim.SetInteger ("direction", -2);
+						direction = -2;
 
 						weaponScript.lastDirection = KeyCode.LeftArrow;
 					} else if (difference == Vector3.right) {
 						anim.SetInteger ("direction", 2);
+						direction = 2;
 
 						weaponScript.lastDirection = KeyCode.RightArrow;
 					}
