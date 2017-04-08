@@ -17,8 +17,8 @@ public class WalkingFeetScript : MonoBehaviour {
 		walking = GetComponentInParent<MoveScript> ().walking;
 		direction = GetComponentInParent<MoveScript> ().directionValue;
 		if (GetComponentInParent<MoveScript> ().walking) {
-			Debug.Log (direction);
-			Debug.Log (walking);
+//			Debug.Log (direction);
+//			Debug.Log (walking);
 			anim.SetBool ("moving", walking);
 			anim.SetInteger ("direction", direction);
 		} else {

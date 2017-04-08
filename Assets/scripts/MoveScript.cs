@@ -187,7 +187,7 @@ public class MoveScript : MonoBehaviour {
 		}
 //		summonerSpeed = 100.0f;
 		if (Input.GetKey (KeyCode.D)) {
-			Debug.Log ("D");
+//			Debug.Log ("D");
 			anim.SetInteger ("direction", 2);
 			directionValue = 2;
 //			feetAnim.SetInteger ("direction", 2);

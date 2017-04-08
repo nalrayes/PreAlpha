@@ -17,8 +17,8 @@ public class EnemyFeetScript2 : MonoBehaviour {
 		walking = GetComponentInParent<EnemyAI> ().moving;
 		direction = GetComponentInParent<EnemyAI> ().direction;
 		if (GetComponentInParent<EnemyAI> ().moving) {
-			Debug.Log (direction);
-			Debug.Log (walking);
+//			Debug.Log (direction);
+//			Debug.Log (walking);
 			anim.SetBool ("moving", walking);
 			anim.SetInteger ("direction", direction);
 		} else {

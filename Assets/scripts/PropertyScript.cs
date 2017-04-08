@@ -10,6 +10,9 @@ public class PropertyScript : MonoBehaviour {
 	public int currentMana;
 	public int currentHealth;
 
+	public AudioClip getHit;
+
+
 	// Use this for initialization
 	void Start () {
 		currentHealth = MAX_HEALTH;
@@ -55,6 +58,9 @@ public class PropertyScript : MonoBehaviour {
 			int damage = item.gameObject.GetComponent<DamageScript> ().damage;
 			changeHealth (-1 * damage);
 			Debug.Log ("ow");
+
+			SoundManager.instance.PlaySingle (getHit);
+
 		} else if (item.gameObject.CompareTag ("mana")) {
 			// change mana
 		}
