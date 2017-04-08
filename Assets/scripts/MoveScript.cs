@@ -11,13 +11,13 @@ public class MoveScript : MonoBehaviour {
 	bool canSummon;
 	GameObject summoner;
 	GameObject posessed;
-
-	GameObject jinnWeaponUp;
-	GameObject jinnWeaponDown;
-	GameObject jinnWeaponLeft;
-	GameObject jinnWeaponRight;
-
-	GameObject lastWeapon;
+//
+//	GameObject jinnWeaponUp;
+//	GameObject jinnWeaponDown;
+//	GameObject jinnWeaponLeft;
+//	GameObject jinnWeaponRight;
+//
+//	GameObject lastWeapon;
 
 	JinnScript jinnScript;
 
@@ -44,17 +44,17 @@ public class MoveScript : MonoBehaviour {
 		summoner = GameObject.Find("Summoner");
 
 
-		jinnWeaponUp = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponUp").gameObject;
-		jinnWeaponDown = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponDown").gameObject;
-		jinnWeaponLeft = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponLeft").gameObject;
-		jinnWeaponRight = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponRight").gameObject;
-
-		jinnWeaponUp.SetActive (false);
-		jinnWeaponDown.SetActive (false);
-		jinnWeaponLeft.SetActive (false);
-		jinnWeaponRight.SetActive (false);
-
-		lastWeapon = jinnWeaponUp;
+//		jinnWeaponUp = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponUp").gameObject;
+//		jinnWeaponDown = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponDown").gameObject;
+//		jinnWeaponLeft = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponLeft").gameObject;
+//		jinnWeaponRight = jinn.transform.Find("Weapons").gameObject.transform.Find("WeaponRight").gameObject;
+//
+//		jinnWeaponUp.SetActive (false);
+//		jinnWeaponDown.SetActive (false);
+//		jinnWeaponLeft.SetActive (false);
+//		jinnWeaponRight.SetActive (false);
+//
+//		lastWeapon = jinnWeaponUp;
 
 		timer = 0;
 		summoningTimer = 0;
@@ -109,43 +109,43 @@ public class MoveScript : MonoBehaviour {
 			}
 
 			if (timer > FRAME_LIMIT) {
-				lastWeapon.SetActive (false);
+//				lastWeapon.SetActive (false);
 				timer = 0;
 			}
 				
-			if (Input.GetKey (KeyCode.Q)) {
-				lastWeapon.SetActive (false);
-				timer = 0;
-				
-				if (timer > FRAME_LIMIT) {
-					timer = 0;
-				} else {
-					switch (lastDirection) {
-					case KeyCode.DownArrow:
-						lastWeapon = jinnWeaponDown;
+//			if (Input.GetKey (KeyCode.Q)) {
+//				lastWeapon.SetActive (false);
+//				timer = 0;
+//				
+//				if (timer > FRAME_LIMIT) {
+//					timer = 0;
+//				} else {
+//					switch (lastDirection) {
+//					case KeyCode.DownArrow:
+//						lastWeapon = jinnWeaponDown;
+//
+//						break;
+//					case KeyCode.UpArrow:
+//						lastWeapon = jinnWeaponUp;
+//
+//						break;
+//					case KeyCode.LeftArrow:
+//						lastWeapon = jinnWeaponLeft;
+//
+//						break;
+//					case KeyCode.RightArrow:
+//						lastWeapon = jinnWeaponRight;
+//
+//						break;
+//					default:
+//						lastWeapon = jinnWeaponUp;
+//					
+//						break;
+//					}
+//					lastWeapon.SetActive (true);
 
-						break;
-					case KeyCode.UpArrow:
-						lastWeapon = jinnWeaponUp;
-
-						break;
-					case KeyCode.LeftArrow:
-						lastWeapon = jinnWeaponLeft;
-
-						break;
-					case KeyCode.RightArrow:
-						lastWeapon = jinnWeaponRight;
-
-						break;
-					default:
-						lastWeapon = jinnWeaponUp;
-					
-						break;
-					}
-					lastWeapon.SetActive (true);
-
-				}
-			}
+//				}
+//			}
 
 			if (summoningTimer > SUMMONING_LIMIT) {
 				summoningTimer = 0;
@@ -166,7 +166,7 @@ public class MoveScript : MonoBehaviour {
 			summoningTimer += 2;
 		} else {
 			summonerSpeed = 4.0f;
-			lastWeapon.SetActive (false);
+//			lastWeapon.SetActive (false);
 			if (canSummon) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
 					if (gameObject.GetComponent<PropertyScript>().currentMana > 0) {
