@@ -4095,6 +4095,7 @@ GameObject:
   - component: {fileID: 1253055114}
   - component: {fileID: 1253055113}
   - component: {fileID: 1253055115}
+  - component: {fileID: 1253055116}
   m_Layer: 9
   m_Name: Circle
   m_TagString: jinn
@@ -4202,6 +4203,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posessing: 0
+  anim: {fileID: 1253055116}
+--- !u!95 &1253055116
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1253055110}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 389b9231b7e5f41c3acf05e3f8ed025c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1256080593
 GameObject:
   m_ObjectHideFlags: 0

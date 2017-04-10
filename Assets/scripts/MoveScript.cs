@@ -90,24 +90,31 @@ public class MoveScript : MonoBehaviour {
 				jinn.SetActive (false);
 				summoning = false;
 				summonerSpeed = 4.0f;
-			}
-			if (Input.GetKey (KeyCode.RightArrow)) {
+			} else if (Input.GetKey (KeyCode.RightArrow)) {
 				lastDirection = KeyCode.RightArrow;
-				jinn.transform.position += Vector3.right * jinnSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey (KeyCode.LeftArrow)) {
-				lastDirection = KeyCode.LeftArrow;
-				jinn.transform.position += Vector3.left * jinnSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey (KeyCode.UpArrow)) {
-				lastDirection = KeyCode.UpArrow;
-				jinn.transform.position += Vector3.up * jinnSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey (KeyCode.DownArrow)) {
-				lastDirection = KeyCode.DownArrow;
-				jinn.transform.position += Vector3.down * jinnSpeed * Time.deltaTime;
-			}
+				jinnScript.anim.SetInteger ("direction", 2);
+				jinnScript.anim.SetBool ("moving", true);
 
+				jinn.transform.position += Vector3.right * jinnSpeed * Time.deltaTime;
+			} else if (Input.GetKey (KeyCode.LeftArrow)) {
+				lastDirection = KeyCode.LeftArrow;
+				jinnScript.anim.SetInteger ("direction", -2);
+				jinnScript.anim.SetBool ("moving", true);
+				jinn.transform.position += Vector3.left * jinnSpeed * Time.deltaTime;
+			} else if (Input.GetKey (KeyCode.UpArrow)) {
+				lastDirection = KeyCode.UpArrow;
+				jinnScript.anim.SetInteger ("direction", 1);
+				jinnScript.anim.SetBool ("moving", true);
+				jinn.transform.position += Vector3.up * jinnSpeed * Time.deltaTime;
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				jinnScript.anim.SetInteger ("direction", -1);
+				jinnScript.anim.SetBool ("moving", true);
+
+				Debug.Log (jinnScript.anim.isInitialized);
+				jinn.transform.position += Vector3.down * jinnSpeed * Time.deltaTime;
+			} else {
+				jinnScript.anim.SetBool ("moving", false);
+			}
 			if (timer > FRAME_LIMIT) {
 //				lastWeapon.SetActive (false);
 				timer = 0;
@@ -169,6 +176,7 @@ public class MoveScript : MonoBehaviour {
 //			lastWeapon.SetActive (false);
 			if (canSummon) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
+					jinnScript.anim.SetTrigger("summoning");
 					if (gameObject.GetComponent<PropertyScript>().currentMana > 0) {
 						summoning = true;
 						jinn.SetActive (true);
