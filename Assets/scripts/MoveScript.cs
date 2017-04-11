@@ -162,6 +162,7 @@ public class MoveScript : MonoBehaviour {
 			}
 				
 		} else if (jinnScript.posessing) {
+			//particles
 			if (summoningTimer % 20 == 0)
 			if (summoningTimer % 30 == 0)
 				gameObject.GetComponent<PropertyScript> ().changeMana (-1);
@@ -176,14 +177,17 @@ public class MoveScript : MonoBehaviour {
 //			lastWeapon.SetActive (false);
 			if (canSummon) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
-					jinnScript.anim.SetTrigger("summoning");
-					if (gameObject.GetComponent<PropertyScript>().currentMana > 0) {
+					jinnScript.anim.SetTrigger ("summoning");
+					anim.SetBool ("summoning", true);
+					if (gameObject.GetComponent<PropertyScript> ().currentMana > 0) {
 						summoning = true;
 						jinn.SetActive (true);
 						Vector3 rightOf = new Vector3 (1.2f, 0f);
 						jinn.transform.position = summoner.transform.position + rightOf;
 						jinn.transform.rotation = summoner.transform.rotation;
 					}
+				} else {
+					anim.SetBool ("summoning", false);
 				}
 			} else {
 				summoningTimer += 1;

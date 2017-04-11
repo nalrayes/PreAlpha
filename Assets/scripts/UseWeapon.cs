@@ -18,8 +18,12 @@ public class UseWeapon : MonoBehaviour {
 	int attackTimer;
 
 	public bool attackCondition;
+
+	Animator anim;
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+
 		attackTimer = 0;
 		timer = 0;
 		weaponUp = gameObject.transform.FindChild("WeaponUp").gameObject;
@@ -61,24 +65,35 @@ public class UseWeapon : MonoBehaviour {
 				case KeyCode.DownArrow:
 					lastWeapon = weaponDown;
 
+					anim.SetInteger ("direction", -1);
+
 					break;
 				case KeyCode.UpArrow:
 					lastWeapon = weaponUp;
+
+					anim.SetInteger ("direction", 1);
 
 					break;
 				case KeyCode.LeftArrow:
 					lastWeapon = weaponLeft;
 
+					anim.SetInteger ("direction", -2);
+
 					break;
 				case KeyCode.RightArrow:
 					lastWeapon = weaponRight;
+
+					anim.SetInteger ("direction", 2);
 
 					break;
 				default:
 					lastWeapon = weaponUp;
 
+					anim.SetInteger ("direction", 1);
+
 					break;
 				}
+				anim.SetBool ("attack", true);
 				lastWeapon.SetActive (true);
 
 			}
@@ -95,24 +110,35 @@ public class UseWeapon : MonoBehaviour {
 					case KeyCode.DownArrow:
 						lastWeapon = weaponDown;
 
+						anim.SetInteger ("direction", -1);
+
 						break;
 					case KeyCode.UpArrow:
 						lastWeapon = weaponUp;
+
+						anim.SetInteger ("direction", 1);
 
 						break;
 					case KeyCode.LeftArrow:
 						lastWeapon = weaponLeft;
 
+						anim.SetInteger ("direction", -2);
+
 						break;
 					case KeyCode.RightArrow:
 						lastWeapon = weaponRight;
+
+						anim.SetInteger ("direction", 2);
 
 						break;
 					default:
 						lastWeapon = weaponUp;
 
+						anim.SetInteger ("direction", 1);
+
 						break;
 					}
+					anim.SetBool ("attack", true);
 					lastWeapon.SetActive (true);
 
 				}

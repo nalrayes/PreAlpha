@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour {
 	public int direction = 0;
 	public bool moving = false;
 
-	Animator anim;
+	public Animator anim;
 
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag ("summoner");
@@ -64,27 +64,27 @@ public class EnemyAI : MonoBehaviour {
 					difference.x = Mathf.Round (difference.x);
 					difference.y = Mathf.Round (difference.y);
 					if (difference == Vector3.up) {
-						anim.SetInteger ("direction", 1);
+						
 						direction = 1;
 
 						weaponScript.lastDirection = KeyCode.UpArrow;
 					} else if (difference == Vector3.down) {
-						anim.SetInteger ("direction", -1);
+						
 						direction = -1;
 
 						weaponScript.lastDirection = KeyCode.DownArrow;
 					} else if (difference == Vector3.left) {
-						anim.SetInteger ("direction", -2);
+						
 						direction = -2;
 
 						weaponScript.lastDirection = KeyCode.LeftArrow;
 					} else if (difference == Vector3.right) {
-						anim.SetInteger ("direction", 2);
+						
 						direction = 2;
 
 						weaponScript.lastDirection = KeyCode.RightArrow;
 					}
-					anim.SetBool ("attack", true);
+
 				} else {
 					//return to original position
 					Vector3 directionToMove = transform.position - originalPosition;

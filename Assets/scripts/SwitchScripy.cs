@@ -14,8 +14,11 @@ public class SwitchScripy : MonoBehaviour {
 	int ftimer;
 	GameObject jinn;
 
+	Animator anim;
+
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		ftimer = 0;
 		originalColor = this.GetComponent<SpriteRenderer> ().color;
 		door = GameObject.Find ("Door");
@@ -28,11 +31,12 @@ public class SwitchScripy : MonoBehaviour {
 			ftimer++;
 			if (Input.GetKey (KeyCode.Q)) {
 				if (door.activeSelf) {
+					anim.SetBool ("on", true);
 					door.SetActive (false);	
 					oldColor = this.GetComponent<SpriteRenderer> ().color;
-					this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);
+//					this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);
 				} else {
-					this.GetComponent<SpriteRenderer> ().color = new Color32(180, 180, 30, 255); 
+//					this.GetComponent<SpriteRenderer> ().color = new Color32(180, 180, 30, 255); 
 					if (ftimer > 3) {
 						door.SetActive (true);
 						ftimer = 0;
@@ -46,7 +50,8 @@ public class SwitchScripy : MonoBehaviour {
 				Vector3 rightOf = new Vector3 (1.2f, 0f);
 				jinn.transform.position = GameObject.FindGameObjectWithTag ("summoner").transform.position + rightOf;
 				jinn.GetComponent<JinnScript> ().posessing = false;
-				this.GetComponent<SpriteRenderer> ().color = originalColor;
+				anim.SetBool ("on", false);
+//				this.GetComponent<SpriteRenderer> ().color = originalColor;
 			}
 		}	
 	}
@@ -58,15 +63,17 @@ public class SwitchScripy : MonoBehaviour {
 			timer = 0;
 			jinn.GetComponent<JinnScript> ().posessing = true;
 			posessed = true;
-			this.GetComponent<SpriteRenderer>().color =  new Color32(180, 180, 30, 255);
+//			this.GetComponent<SpriteRenderer>().color =  new Color32(180, 180, 30, 255);
 		} else {
 			if (door.activeSelf) {
+				anim.SetBool ("on", false);
 				door.SetActive (false);	
 				oldColor = this.GetComponent<SpriteRenderer> ().color;
-				this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);	
+//				this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);	
 			} else {
-				this.GetComponent<SpriteRenderer> ().color = originalColor;
+//				this.GetComponent<SpriteRenderer> ().color = originalColor;
 				door.SetActive (true);
+				anim.SetBool ("on", true);
 			}
 		}
 	}

@@ -27,12 +27,13 @@ public class EnemyScript : MonoBehaviour {
 
 	public KeyCode lastDirection;
 
+	Animator anim;
 
 	PropertyScript summonerProps;
 
-
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		timer = 0;
 //		attackTimer = 0;
 		posessionSpeed = 2.0f;
@@ -64,18 +65,30 @@ public class EnemyScript : MonoBehaviour {
 			timer++;
 //			attackTimer++;
 			if (Input.GetKey(KeyCode.RightArrow)){
+				anim.SetBool ("moving", true);
+				anim.SetInteger ("direction", 2);
+
 				lastDirection = KeyCode.RightArrow;
 				this.transform.position += Vector3.right * posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.LeftArrow)){
+				anim.SetBool ("moving", true);
+				anim.SetInteger ("direction", -2);
+
 				lastDirection = KeyCode.LeftArrow;
 				this.gameObject.transform.position += Vector3.left* posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.UpArrow)){
+				anim.SetBool ("moving", true);
+				anim.SetInteger ("direction", 1);
+
 				lastDirection = KeyCode.UpArrow;
 				this.gameObject.transform.position += Vector3.up * posessionSpeed * Time.deltaTime;
 			}
 			if (Input.GetKey(KeyCode.DownArrow)){
+				anim.SetBool ("moving", true);
+				anim.SetInteger ("direction", -1);
+
 				lastDirection = KeyCode.DownArrow;
 				this.gameObject.transform.position += Vector3.down * posessionSpeed * Time.deltaTime;
 			}
@@ -83,9 +96,15 @@ public class EnemyScript : MonoBehaviour {
 
 
 
+
+
 			if (timer > 150) {
 				timer = 0;
 				posessed = false;
+
+				anim.SetTrigger ("unposessed");
+				anim.SetBool ("posessed", false);
+
 				jinnScript.posessing = false;
 				jinn.SetActive (true);
 				Vector3 rightOf = new Vector3 (1.2f, 0f);
@@ -98,7 +117,7 @@ public class EnemyScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
 		if (collisionInfo.gameObject.CompareTag("weapon")) {
-			this.GetComponent<SpriteRenderer> ().color = Color.red;
+//			this.GetComponent<SpriteRenderer> ().color = Color.red;
 
 			hits += 1;
 			if (hits >= TO_KILL) {
@@ -109,6 +128,7 @@ public class EnemyScript : MonoBehaviour {
 			}
 		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
 			summonerProps.changeMana (-1);
+			anim.SetBool ("posessed", true);
 
 			hits += 1;
 
