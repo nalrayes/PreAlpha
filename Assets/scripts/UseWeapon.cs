@@ -138,7 +138,7 @@ public class UseWeapon : MonoBehaviour {
 
 						break;
 					}
-					anim.SetBool ("attack", true);
+					anim.SetTrigger ("attack as jinn");
 					lastWeapon.SetActive (true);
 
 				}

@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyFeetScript2 : MonoBehaviour {
 	private Animator anim;
 
-	bool walking;
-	int direction;
+	public bool walking = false;
+	public int direction = 0;
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();

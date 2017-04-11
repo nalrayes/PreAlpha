@@ -932,6 +932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   moving: 0
+  anim: {fileID: 0}
 --- !u!114 &309664563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4104,7 +4105,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &1253055114
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6759,6 +6760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   moving: 0
+  anim: {fileID: 0}
 --- !u!114 &2074254175
 MonoBehaviour:
   m_ObjectHideFlags: 0

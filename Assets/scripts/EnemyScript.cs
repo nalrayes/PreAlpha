@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour {
 	float timer;
 	float posessionSpeed;
 
+	public int POSESSION_LIMIT = 1000;
+
 	GameObject jinn;
 	JinnScript jinnScript;
 
@@ -26,9 +28,10 @@ public class EnemyScript : MonoBehaviour {
 	public GameObject weaponRight;
 
 	public KeyCode lastDirection;
-
+	
 	Animator anim;
-
+	int direction = 0;
+	bool moving = false;
 	PropertyScript summonerProps;
 
 	// Use this for initialization
@@ -64,41 +67,46 @@ public class EnemyScript : MonoBehaviour {
 		if (posessed) {
 			timer++;
 //			attackTimer++;
-			if (Input.GetKey(KeyCode.RightArrow)){
-				anim.SetBool ("moving", true);
-				anim.SetInteger ("direction", 2);
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				direction = 2;
+				moving = true;
+
 
 				lastDirection = KeyCode.RightArrow;
 				this.transform.position += Vector3.right * posessionSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.LeftArrow)){
-				anim.SetBool ("moving", true);
-				anim.SetInteger ("direction", -2);
+			} else if (Input.GetKey (KeyCode.LeftArrow)) {
+				direction = -2;
+				moving = true;
 
 				lastDirection = KeyCode.LeftArrow;
-				this.gameObject.transform.position += Vector3.left* posessionSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.UpArrow)){
-				anim.SetBool ("moving", true);
-				anim.SetInteger ("direction", 1);
+				this.gameObject.transform.position += Vector3.left * posessionSpeed * Time.deltaTime;
+			} else if (Input.GetKey (KeyCode.UpArrow)) {
+				direction = 1;
+				moving = true;
 
 				lastDirection = KeyCode.UpArrow;
 				this.gameObject.transform.position += Vector3.up * posessionSpeed * Time.deltaTime;
-			}
-			if (Input.GetKey(KeyCode.DownArrow)){
-				anim.SetBool ("moving", true);
-				anim.SetInteger ("direction", -1);
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+				direction = -1;
+				moving = true;
 
 				lastDirection = KeyCode.DownArrow;
 				this.gameObject.transform.position += Vector3.down * posessionSpeed * Time.deltaTime;
+			} else {
+				moving = false;
 			}
+			anim.SetBool ("moving", moving);
+			anim.SetInteger ("direction", direction);
+
+			GetComponentInChildren<EnemyFeetScript2> ().walking = moving;
+			GetComponentInChildren<EnemyFeetScript2> ().direction = direction;
 			gameObject.GetComponent<UseWeapon>().lastDirection = lastDirection;
 
 
 
 
 
-			if (timer > 150) {
+			if (timer > POSESSION_LIMIT) {
 				timer = 0;
 				posessed = false;
 
@@ -129,6 +137,7 @@ public class EnemyScript : MonoBehaviour {
 		} else if (collisionInfo.gameObject.CompareTag("jinn")) {
 			summonerProps.changeMana (-1);
 			anim.SetBool ("posessed", true);
+			anim.SetTrigger ("start posess");
 
 			hits += 1;
 
