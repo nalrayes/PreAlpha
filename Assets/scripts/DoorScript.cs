@@ -10,8 +10,18 @@ public class DoorScript : MonoBehaviour {
 
 	Color32 originalColor;
 
+	public bool closed = true;
+	public bool opened = false;
+
+	public int state = 0;
+
+	public bool opening = false;
+	public bool closing = false;
+
+	Animator anim;
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
 		timer = 0;
 		jinn = GameObject.FindGameObjectWithTag ("jinn");
 		originalColor = gameObject.GetComponent<SpriteRenderer> ().color;
@@ -23,19 +33,57 @@ public class DoorScript : MonoBehaviour {
 		if (posessed) {
 			timer++;
 			if (Input.GetKey (KeyCode.Q)) {
-				gameObject.transform.position += Vector3.up * Time.deltaTime;
+				if (closed) {
+					opening = true;
+				} else if (opened) {
+					closing = true;
+				}
+				if (opening) {
+					closed = false;
+					state += 1;
+					if (state == 3) {
+						opened = true;
+						opening = false;
+					}
+				} else if (closing) {
+					opened = false;
+					Debug.Log ("state " + state.ToString());
+					state -= 1;
+					if (state == 0) {
+						closing = false;
+						closed = true;
+					}
+				}
 			}
-			if (timer > 150) {
+			if (timer > 900) {
+				anim.SetTrigger ("unposess");
 				timer = 0;
 				posessed = false;
 				jinn.GetComponent<JinnScript> ().posessing = false;
 				gameObject.GetComponent<SpriteRenderer> ().color = originalColor;
 			}
 		} else {
-			if (transform.position != originalPosition) {
-				transform.position = Vector3.MoveTowards (transform.position, originalPosition, Time.deltaTime);
+//			Debug.Log ("state " + state.ToString());
+			if (opening) {
+				closed = false;
+				state += 1;
+				if (state == 3) {
+					opened = true;
+					opening = false;
+				}
+			} else if (closing) {
+				opened = false;
+				Debug.Log ("state " + state.ToString());
+				state -= 1;
+				if (state == 0) {
+					closing = false;
+					closed = true;
+				}
 			}
+//			anim.SetInteger ("state", state);
 		}
+		anim.SetInteger ("state", state);
+			
 	}
 
 	void OnCollisionEnter2D(Collision2D info) {
@@ -44,7 +92,9 @@ public class DoorScript : MonoBehaviour {
 			info.gameObject.GetComponent<JinnScript> ().posessing = true;
 			posessed = true;
 
-			gameObject.GetComponent<SpriteRenderer> ().color = new Color32 (180, 180, 30, 255);
+			anim.SetTrigger ("posess");
+//			gameObject.GetComponent<SpriteRenderer> ().color = new Color32 (180, 180, 30, 255);
 		}
 	}
+		
 }

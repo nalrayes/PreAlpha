@@ -57,6 +57,7 @@ public class SwitchScripy : MonoBehaviour {
 	}
 		
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
+		Debug.Log (door.GetComponent<DoorScript>().closed);
 		if (collisionInfo.gameObject.CompareTag ("jinn")) {
 			jinn = collisionInfo.gameObject;
 			jinn.SetActive (false);
@@ -65,15 +66,17 @@ public class SwitchScripy : MonoBehaviour {
 			posessed = true;
 //			this.GetComponent<SpriteRenderer>().color =  new Color32(180, 180, 30, 255);
 		} else {
-			if (door.activeSelf) {
-				anim.SetBool ("on", false);
-				door.SetActive (false);	
+			if (door.GetComponent<DoorScript>().closed) {
+				door.GetComponent<DoorScript> ().opening = true;
+				anim.SetBool ("on", true);
+//				door.SetActive (false);	
 				oldColor = this.GetComponent<SpriteRenderer> ().color;
 //				this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);	
-			} else {
+			} else if (door.GetComponent<DoorScript>().opened) {
+				door.GetComponent<DoorScript> ().closing = true;
 //				this.GetComponent<SpriteRenderer> ().color = originalColor;
 				door.SetActive (true);
-				anim.SetBool ("on", true);
+				anim.SetBool ("on", false);
 			}
 		}
 	}
