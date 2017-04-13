@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour {
 			timer++;
 			float dist = Vector3.Distance (summoner.transform.position, transform.position);
 			if (!gameObject.GetComponent<EnemyScript>().posessed) {
-				if (dist <= 10f && dist > 1.5f) {
+				if (dist <= 10f && dist > 1f) {
 					moveToPlayer ();
 					if (timer > LIMIT) {
 						weaponScript.attackCondition = false;
@@ -151,13 +151,13 @@ public class EnemyAI : MonoBehaviour {
 		}
 
 		anim.SetInteger ("direction", direction);
-		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack up") || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack down")
-		    || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack left") || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack right")) {
-			anim.SetBool ("moving", false);
-		} else {
-			anim.SetBool ("moving", moving);
+//		if (anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack up") || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack down")
+//		    || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack left") || anim.GetCurrentAnimatorStateInfo (0).IsName ("enemy attack right")) {
+//			anim.SetBool ("moving", false);
+//		} else {
+		anim.SetBool ("moving", true);
 			transform.position = Vector3.MoveTowards (transform.position, summoner.transform.position, speed*Time.deltaTime);
-		}
+//		}
 		// if within range, attack
 	}
 
