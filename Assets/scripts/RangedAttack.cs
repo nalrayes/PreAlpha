@@ -19,6 +19,8 @@ public class RangedAttack : MonoBehaviour {
 
 	Animator anim;
 
+	public AudioClip attackSound;
+
 	// Use this for initialization
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag("summoner");
@@ -43,33 +45,41 @@ public class RangedAttack : MonoBehaviour {
 		if (!moveScript.getSummoning()) {
 			if (canAttack) {
 				if (Input.GetKey(KeyCode.DownArrow)) {
-//					GameObject projectile = Instantiate (projectilePrefab) as GameObject;
-//					projectile.transform.position = this.transform.position;
-//					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.down;
+					GameObject projectile = Instantiate (projectilePrefab) as GameObject;
+					projectile.transform.position = this.transform.position;
+					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.down;
 
 					anim.SetTrigger ("attack");
 					anim.SetInteger ("direction", -1);
+
+					SoundManager.instance.PlaySingle(attackSound);
 				} else if (Input.GetKey(KeyCode.UpArrow)) {
-//					GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
-//					projectile.transform.position = this.transform.position;
-//					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.up;
+					GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
+					projectile.transform.position = this.transform.position;
+					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.up;
 
 					anim.SetTrigger ("attack");
 					anim.SetInteger ("direction", 1);
+
+					SoundManager.instance.PlaySingle(attackSound);
 				} else if (Input.GetKey(KeyCode.LeftArrow)) {
-//					GameObject projectile = Instantiate (projectilePrefab) as GameObject;
-//					projectile.transform.position = this.transform.position;
-//					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.left;
+					GameObject projectile = Instantiate (projectilePrefab) as GameObject;
+					projectile.transform.position = this.transform.position;
+					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.left;
 
 					anim.SetTrigger ("attack");
 					anim.SetInteger ("direction", -2);
+
+					SoundManager.instance.PlaySingle(attackSound);
 				} else if (Input.GetKey(KeyCode.RightArrow)) {
-//					GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
-//					projectile.transform.position = this.transform.position;
-//					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.right;
+					GameObject projectile = Instantiate (projectilePrefab) as GameObject;	
+					projectile.transform.position = this.transform.position;
+					projectile.GetComponent<ProjectileScript> ().directionToMove = Vector2.right;
 
 					anim.SetTrigger ("attack");
 					anim.SetInteger ("direction", 2);
+
+					SoundManager.instance.PlaySingle(attackSound);
 				}
 				canAttack = false;
 			} else {

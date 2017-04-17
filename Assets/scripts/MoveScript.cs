@@ -11,6 +11,9 @@ public class MoveScript : MonoBehaviour {
 	bool canSummon;
 	GameObject summoner;
 	GameObject posessed;
+
+	public AudioClip summonSound;
+	public AudioClip unsummonSound;
 //
 //	GameObject jinnWeaponUp;
 //	GameObject jinnWeaponDown;
@@ -87,6 +90,9 @@ public class MoveScript : MonoBehaviour {
 			}
 			summonerSpeed = 3.0f;
 			if (Input.GetKeyDown (KeyCode.Space)) {
+				//play unpossess
+				SoundManager.instance.PlaySingle(unsummonSound);
+
 				jinn.SetActive (false);
 				summoning = false;
 				summonerSpeed = 4.0f;
@@ -177,6 +183,8 @@ public class MoveScript : MonoBehaviour {
 //			lastWeapon.SetActive (false);
 			if (canSummon) {
 				if (Input.GetKeyDown (KeyCode.Space)) {
+					SoundManager.instance.PlaySingle(summonSound);
+
 					jinnScript.anim.SetTrigger ("summoning");
 					anim.SetBool ("summoning", true);
 					if (gameObject.GetComponent<PropertyScript> ().currentMana > 0) {
