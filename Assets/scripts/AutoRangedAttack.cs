@@ -11,6 +11,8 @@ public class AutoRangedAttack : MonoBehaviour {
 
 	public bool itemGet = false;
 
+	public float TIME_LIMIT = 60;
+
 	GameObject jinn;
 
 	// Use this for initialization
@@ -42,7 +44,7 @@ public class AutoRangedAttack : MonoBehaviour {
 				}
 			} else {
 				timer++;
-				if (timer == 30) {
+				if (timer == TIME_LIMIT) {
 					createAndLaunchProjectile (Vector2.up);
 					createAndLaunchProjectile (Vector2.down);
 					createAndLaunchProjectile (Vector2.right);
@@ -59,6 +61,11 @@ public class AutoRangedAttack : MonoBehaviour {
 		projectile.layer = 14;
 		//				Debug.Log (projectile.layer);
 		projectile.transform.position = this.transform.position + (Vector3)direction;
+		if (direction == Vector2.right) {
+			projectile.transform.rotation = new Quaternion (0, 0, -90, 1);
+		} else if (direction == Vector2.left) {
+			projectile.transform.rotation = new Quaternion (0, 0, 90, 1);
+		}
 		projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
 	}
 

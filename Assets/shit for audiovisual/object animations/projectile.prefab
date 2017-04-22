@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4898999807641702}
   - component: {fileID: 212036149922974534}
-  - component: {fileID: 58540610968487316}
   - component: {fileID: 114020526197012398}
   - component: {fileID: 50054611567280216}
   - component: {fileID: 114612565300226704}
+  - component: {fileID: 61800045650846810}
   m_Layer: 12
   m_Name: projectile
   m_TagString: weapon
@@ -64,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58540610968487316
-CircleCollider2D:
+--- !u!61 &61800045650846810
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -77,8 +77,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.23333333, y: 0.033333335}
+    newSize: {x: 0.4, y: 0.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Size: {x: 0.23333333, y: 0.1}
+  m_EdgeRadius: 0
 --- !u!114 &114020526197012398
 MonoBehaviour:
   m_ObjectHideFlags: 1
