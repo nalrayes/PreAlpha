@@ -15,6 +15,7 @@ public class CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+//		Debug.Log (summoner.transform.position);
 		Vector2 targetPosition = Vector2.Lerp(transform.position, target.position, moveSpeed*Time.deltaTime);
 		transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
 	}

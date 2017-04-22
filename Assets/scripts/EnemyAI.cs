@@ -156,7 +156,7 @@ public class EnemyAI : MonoBehaviour {
 //			anim.SetBool ("moving", false);
 //		} else {
 		anim.SetBool ("moving", true);
-			transform.position = Vector3.MoveTowards (transform.position, summoner.transform.position, speed*Time.deltaTime);
+		GetComponent<Rigidbody2D>().MovePosition( Vector3.MoveTowards (transform.position, summoner.transform.position, speed*Time.deltaTime));
 //		}
 		// if within range, attack
 	}

@@ -36,6 +36,8 @@ public class PropertyScript : MonoBehaviour {
 		} else {
 			currentHealth += amt;
 		}
+		if (gameObject.name == "Summoner")
+			GameObject.Find ("UI").GetComponent<UISprite> ().recoverHealth ((float)amt / MAX_HEALTH);
 		printall ();
 	}
 
@@ -47,6 +49,10 @@ public class PropertyScript : MonoBehaviour {
 		} else {
 			currentMana += amt;
 		}
+		if (gameObject.name == "Summoner") {
+			GameObject.Find ("UI").GetComponent<UISprite> ().recoverMana ((float) amt / MAX_MANA);
+//			Debug.Log ((float) amt / MAX_MANA);
+		}
 		printall ();
 	}
 
@@ -57,7 +63,7 @@ public class PropertyScript : MonoBehaviour {
 		} else if (item.gameObject.CompareTag ("weapon") || item.gameObject.CompareTag("enemy weapon")) {
 			int damage = item.gameObject.GetComponent<DamageScript> ().damage;
 			changeHealth (-1 * damage);
-			Debug.Log ("ow");
+//			Debug.Log ("ow");
 
 			SoundManager.instance.PlaySingle (getHit);
 

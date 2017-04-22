@@ -10,6 +10,9 @@ public class SwitchScripy : MonoBehaviour {
 
 	public bool posessed = false;
 
+	public AudioClip openSound;
+	public AudioClip closeSound;
+
 	float timer;
 	int ftimer;
 	GameObject jinn;
@@ -31,6 +34,7 @@ public class SwitchScripy : MonoBehaviour {
 			ftimer++;
 			if (Input.GetKey (KeyCode.Q)) {
 				if (door.activeSelf) {
+					SoundManager.instance.PlaySingle (closeSound);
 					anim.SetBool ("on", true);
 					door.SetActive (false);	
 					oldColor = this.GetComponent<SpriteRenderer> ().color;
@@ -67,12 +71,14 @@ public class SwitchScripy : MonoBehaviour {
 //			this.GetComponent<SpriteRenderer>().color =  new Color32(180, 180, 30, 255);
 		} else {
 			if (door.GetComponent<DoorScript>().closed) {
+				SoundManager.instance.PlaySingle (closeSound);
 				door.GetComponent<DoorScript> ().opening = true;
 				anim.SetBool ("on", true);
 //				door.SetActive (false);	
 				oldColor = this.GetComponent<SpriteRenderer> ().color;
 //				this.GetComponent<SpriteRenderer> ().color = new Color32 (67, 161, 99, 255);	
 			} else if (door.GetComponent<DoorScript>().opened) {
+				SoundManager.instance.PlaySingle (openSound);
 				door.GetComponent<DoorScript> ().closing = true;
 //				this.GetComponent<SpriteRenderer> ().color = originalColor;
 				door.SetActive (true);

@@ -14,6 +14,9 @@ public class MoveScript : MonoBehaviour {
 
 	public AudioClip summonSound;
 	public AudioClip unsummonSound;
+
+	public static AudioClip possessSound;
+	public static AudioClip unpossessSound;
 //
 //	GameObject jinnWeaponUp;
 //	GameObject jinnWeaponDown;
@@ -101,23 +104,26 @@ public class MoveScript : MonoBehaviour {
 				jinnScript.anim.SetInteger ("direction", 2);
 				jinnScript.anim.SetBool ("moving", true);
 
-				jinn.transform.position += Vector3.right * jinnSpeed * Time.deltaTime;
+				jinn.GetComponent<Rigidbody2D>().MovePosition(jinn.transform.position + Vector3.right * jinnSpeed * Time.deltaTime);
 			} else if (Input.GetKey (KeyCode.LeftArrow)) {
 				lastDirection = KeyCode.LeftArrow;
 				jinnScript.anim.SetInteger ("direction", -2);
 				jinnScript.anim.SetBool ("moving", true);
-				jinn.transform.position += Vector3.left * jinnSpeed * Time.deltaTime;
+				jinn.GetComponent<Rigidbody2D>().MovePosition(jinn.transform.position + Vector3.left * jinnSpeed * Time.deltaTime);
+//				jinn.transform.position += Vector3.left * jinnSpeed * Time.deltaTime;
 			} else if (Input.GetKey (KeyCode.UpArrow)) {
 				lastDirection = KeyCode.UpArrow;
 				jinnScript.anim.SetInteger ("direction", 1);
 				jinnScript.anim.SetBool ("moving", true);
-				jinn.transform.position += Vector3.up * jinnSpeed * Time.deltaTime;
+				jinn.GetComponent<Rigidbody2D>().MovePosition(jinn.transform.position + Vector3.up * jinnSpeed * Time.deltaTime);
+//				jinn.transform.position += Vector3.up * jinnSpeed * Time.deltaTime;
 			} else if (Input.GetKey (KeyCode.DownArrow)) {
 				jinnScript.anim.SetInteger ("direction", -1);
 				jinnScript.anim.SetBool ("moving", true);
 
-				Debug.Log (jinnScript.anim.isInitialized);
-				jinn.transform.position += Vector3.down * jinnSpeed * Time.deltaTime;
+//				Debug.Log (jinnScript.anim.isInitialized);
+				jinn.GetComponent<Rigidbody2D>().MovePosition(jinn.transform.position + Vector3.down * jinnSpeed * Time.deltaTime);
+//				jinn.transform.position += Vector3.down * jinnSpeed * Time.deltaTime;
 			} else {
 				jinnScript.anim.SetBool ("moving", false);
 			}
@@ -211,25 +217,29 @@ public class MoveScript : MonoBehaviour {
 			anim.SetInteger ("direction", 2);
 			directionValue = 2;
 //			feetAnim.SetInteger ("direction", 2);
-			summoner.transform.position += Vector3.right * summonerSpeed * Time.deltaTime;
+//			summoner.transform.position += Vector3.right * summonerSpeed * Time.deltaTime;
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.right * summonerSpeed * Time.deltaTime);
 			walking = true;
 		} else if (Input.GetKey (KeyCode.A)) {
 			anim.SetInteger ("direction", -2);
 			directionValue = -2;
 //			feetAnim.SetInteger ("direction", -2);
-			summoner.transform.position += Vector3.left * summonerSpeed * Time.deltaTime;
+//			summoner.transform.position += Vector3.left * summonerSpeed * Time.deltaTime;
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.left * summonerSpeed * Time.deltaTime);
 			walking = true;
 		} else if (Input.GetKey (KeyCode.W)) {
 			anim.SetInteger ("direction", 1);
 			directionValue = 1;
 //			feetAnim.SetInteger ("direction", 1);
-			summoner.transform.position += Vector3.up * summonerSpeed * Time.deltaTime;
+//			summoner.transform.position += Vector3.up * summonerSpeed * Time.deltaTime;
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.up * summonerSpeed * Time.deltaTime);
 			walking = true;
 		} else if (Input.GetKey (KeyCode.S)) {
 			anim.SetInteger ("direction", -1);
 			directionValue = -1;
 //			feetAnim.SetInteger ("direction", -1);
-			summoner.transform.position += Vector3.down * summonerSpeed * Time.deltaTime;
+//			summoner.transform.position += Vector3.down * summonerSpeed * Time.deltaTime;
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.down * summonerSpeed * Time.deltaTime);
 			walking = true;
 		} else {
 			walking = false;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorScript : MonoBehaviour {
-	bool posessed;
+	public bool posessed;
 	int timer;
 	GameObject jinn;
 	Vector3 originalPosition;
@@ -21,6 +21,7 @@ public class DoorScript : MonoBehaviour {
 	Animator anim;
 	// Use this for initialization
 	void Start () {
+		
 		anim = GetComponent<Animator> ();
 		timer = 0;
 		jinn = GameObject.FindGameObjectWithTag ("jinn");
@@ -31,6 +32,14 @@ public class DoorScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (posessed) {
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				anim.SetTrigger ("unposess");
+				timer = 0;
+				Debug.Log ("ayy");
+				posessed = false;
+				jinn.SetActive (true);
+				jinn.GetComponent<JinnScript> ().posessing = false;
+			}
 			timer++;
 			if (Input.GetKey (KeyCode.Q)) {
 				if (closed) {
@@ -55,12 +64,12 @@ public class DoorScript : MonoBehaviour {
 					}
 				}
 			}
-			if (timer > 900) {
+			if (timer > 150 || posessed == false) {
 				anim.SetTrigger ("unposess");
 				timer = 0;
 				posessed = false;
 				jinn.GetComponent<JinnScript> ().posessing = false;
-				gameObject.GetComponent<SpriteRenderer> ().color = originalColor;
+//				gameObject.GetComponent<SpriteRenderer> ().color = originalColor;
 			}
 		} else {
 //			Debug.Log ("state " + state.ToString());

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class JinnScript : MonoBehaviour {
 	public bool posessing;
+	public GameObject posessingObject;
 	// Use this for initialization
 	public Animator anim;
 	void Start ()
@@ -18,7 +19,12 @@ public class JinnScript : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D collisionInfo) {
-		
+	void onDisable() {
+		GameObject.Find ("Summoner").GetComponent<MoveScript> ().summoning = false;
 	}
+
+	void OnCollisionEnter2D(Collision2D collisionInfo) {
+		posessingObject = collisionInfo.gameObject;
+	}
+
 }
