@@ -62,9 +62,12 @@ public class AutoRangedAttack : MonoBehaviour {
 		//				Debug.Log (projectile.layer);
 		projectile.transform.position = this.transform.position + (Vector3)direction;
 		if (direction == Vector2.right) {
+			projectile.transform.rotation = new Quaternion (0, 0, 180, 1);
+		} else if (direction == Vector2.up) {
+			Debug.Log ("yueaj");
+			projectile.transform.rotation = new Quaternion (0, 0,  90, 1);
+		} else if (direction == Vector2.down) {
 			projectile.transform.rotation = new Quaternion (0, 0, -90, 1);
-		} else if (direction == Vector2.left) {
-			projectile.transform.rotation = new Quaternion (0, 0, 90, 1);
 		}
 		projectile.GetComponent<ProjectileScript> ().directionToMove = direction;
 	}
