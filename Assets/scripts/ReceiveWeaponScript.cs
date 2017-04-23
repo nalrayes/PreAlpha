@@ -38,6 +38,10 @@ public class ReceiveWeaponScript : MonoBehaviour {
 			Debug.Log (newEnemy2.transform.position);
 			Debug.Log (newEnemy3);
 			Debug.Log (newEnemy3.transform.position);
+
+			GameObject exitDoor = GameObject.Find ("exit door");
+			exitDoor.GetComponent<PpenDoorScript> ().openDoor (0f, (float) exitDoor.transform.position.y, (float) exitDoor.transform.position.y);
+			exitDoor.GetComponent<BoxCollider2D> ().enabled = false;
 		}
 	}
 }
