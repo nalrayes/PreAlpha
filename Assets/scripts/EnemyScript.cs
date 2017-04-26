@@ -14,13 +14,13 @@ public class EnemyScript : MonoBehaviour {
 	JinnScript jinnScript;
 
 	int TO_KILL = 2;
-	int hits;
+	public int hits;
 
 	int FRAME_LIMIT = 20;
 //	int attackTimer;
 
 	GameObject lastWeapon;
-	UseWeapon weaponScript;
+//	UseWeapon weaponScript;
 
 	public GameObject weaponUp;
 	public GameObject weaponDown;
@@ -43,7 +43,7 @@ public class EnemyScript : MonoBehaviour {
 
 		hits = 0;
 
-		weaponScript= gameObject.GetComponent<UseWeapon> ();
+//		weaponScript= gameObject.GetComponent<UseWeapon> ();
 //		weaponUp = weaponScript.weaponUp;
 //		weaponRight = weaponScript.weaponRight;
 //		weaponLeft = weaponScript.weaponLeft;
@@ -98,8 +98,8 @@ public class EnemyScript : MonoBehaviour {
 			anim.SetBool ("moving", moving);
 			anim.SetInteger ("direction", direction);
 
-			GetComponentInChildren<EnemyFeetScript2> ().walking = moving;
-			GetComponentInChildren<EnemyFeetScript2> ().direction = direction;
+			GetComponentInChildren<EnemyAI> ().moving = moving;
+			GetComponentInChildren<EnemyAI> ().direction = direction;
 			gameObject.GetComponent<UseWeapon>().lastDirection = lastDirection;
 
 
