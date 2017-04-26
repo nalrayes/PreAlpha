@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour {
 //	int attackTimer;
 
 	GameObject lastWeapon;
-//	UseWeapon weaponScript;
+	UseWeapon weaponScript;
 
 	public GameObject weaponUp;
 	public GameObject weaponDown;
@@ -43,11 +43,11 @@ public class EnemyScript : MonoBehaviour {
 
 		hits = 0;
 
-//		weaponScript= gameObject.GetComponent<UseWeapon> ();
-//		weaponUp = weaponScript.weaponUp;
-//		weaponRight = weaponScript.weaponRight;
-//		weaponLeft = weaponScript.weaponLeft;
-//		weaponDown = weaponScript.weaponDown;
+		weaponScript= gameObject.GetComponent<UseWeapon> ();
+		weaponUp = weaponScript.weaponUp;
+		weaponRight = weaponScript.weaponRight;
+		weaponLeft = weaponScript.weaponLeft;
+		weaponDown = weaponScript.weaponDown;
 
 		lastWeapon = weaponUp;
 		lastDirection = KeyCode.UpArrow;
@@ -60,6 +60,12 @@ public class EnemyScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (hits >= TO_KILL) {
+			//ded
+			this.gameObject.SetActive (false);
+			summonerProps.changeMana (3);
+			summonerProps.changeHealth (5);
+		}
 //		Debug.Log (weaponUp);
 //		Debug.Log (weaponDown);
 //		Debug.Log (weaponLeft);

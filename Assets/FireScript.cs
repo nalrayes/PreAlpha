@@ -43,7 +43,7 @@ public class FireScript : MonoBehaviour {
 			thing.GetComponent<PropertyScript>().changeHealth(-1);
 		} else if (thing.gameObject.CompareTag ("enemy")) {
 			//kill
-			this.GetComponent<EnemyScript>().hits  = 2;
+			thing.GetComponent<EnemyScript>().hits  = 2;
 		}
 	}
 }

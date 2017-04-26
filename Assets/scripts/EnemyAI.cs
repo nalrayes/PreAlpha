@@ -23,6 +23,8 @@ public class EnemyAI : MonoBehaviour {
 
 	public Animator anim;
 
+	float dist = 0;
+
 	void Start () {
 		summoner = GameObject.FindGameObjectWithTag ("summoner");
 		playerVisible = false;
@@ -39,9 +41,10 @@ public class EnemyAI : MonoBehaviour {
 //		Debug.Log(Vector3.Distance (summoner.transform.position, transform.position));
 		if (summoner.activeSelf) {
 			timer++;
-			float dist = Vector3.Distance (summoner.transform.position, transform.position);
+			dist = Vector3.Distance (summoner.transform.position, transform.position);
+//			Debug.Log (dist);
 			if (!gameObject.GetComponent<EnemyScript>().posessed) {
-				if (dist <= 10f && dist > 1f) {
+				if (dist <= 5f && dist > .5f) {
 					moveToPlayer ();
 					if (timer > LIMIT) {
 						weaponScript.attackCondition = false;
@@ -49,7 +52,7 @@ public class EnemyAI : MonoBehaviour {
 							timer = 0;
 					}
 					anim.SetBool ("attack", false);
-				} else if (dist <= 1.5f) {
+				} else if (dist <= .65f) {
 					if (timer > LIMIT) {
 						if (timer > LIMIT2) {
 							timer = 0;

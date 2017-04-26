@@ -21,7 +21,7 @@ public class ReceiveWeaponScript : MonoBehaviour {
 //			info.gameObject.transform.Find ("Weapons").gameObject.SetActive (true);
 			gameObject.SetActive (false);
 			GameObject.Find ("AutoTurret").gameObject.GetComponent<AutoRangedAttack> ().itemGet = true;
-			GameObject.Find ("AutoTurret").gameObject.GetComponent<Animator> ().SetTrigger ("stopped");
+			GameObject.Find ("AutoTurret").gameObject.GetComponent<Animator> ().SetBool ("stopped", true);;
 
 			GameObject newEnemy1 = Instantiate (enemyPrefab) as GameObject;
 			newEnemy1.transform.position = new Vector3 (10, -1, 10); 
@@ -32,12 +32,12 @@ public class ReceiveWeaponScript : MonoBehaviour {
 			GameObject newEnemy3 = Instantiate (enemyPrefab) as GameObject;
 			newEnemy3.transform.position = new Vector3 (9, 0, 10);
 
-			Debug.Log (newEnemy1);
-			Debug.Log (newEnemy1.transform.position);
-			Debug.Log (newEnemy2);
-			Debug.Log (newEnemy2.transform.position);
-			Debug.Log (newEnemy3);
-			Debug.Log (newEnemy3.transform.position);
+//			Debug.Log (newEnemy1);
+//			Debug.Log (newEnemy1.transform.position);
+//			Debug.Log (newEnemy2);
+//			Debug.Log (newEnemy2.transform.position);
+//			Debug.Log (newEnemy3);
+//			Debug.Log (newEnemy3.transform.position);
 
 			GameObject exitDoor = GameObject.Find ("exit door");
 			exitDoor.GetComponent<PpenDoorScript> ().openDoor (0f, (float) exitDoor.transform.position.y, (float) exitDoor.transform.position.y);

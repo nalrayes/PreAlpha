@@ -27,16 +27,15 @@ public class AutoRangedAttack : MonoBehaviour {
 		if (!itemGet) {
 			if (posessed) {
 				posessionTimer++;
-				if (Input.GetKey(KeyCode.DownArrow)) {
+				if (Input.GetKey(KeyCode.Q)) {
+					GetComponent<Animator> ().SetTrigger ("attack");
 					createAndLaunchProjectile (Vector2.down);
-				} else if (Input.GetKey(KeyCode.UpArrow)) {
 					createAndLaunchProjectile (Vector2.up);
-				} else if (Input.GetKey(KeyCode.LeftArrow)) {
 					createAndLaunchProjectile (Vector2.left);
-				} else if (Input.GetKey(KeyCode.RightArrow)) {
 					createAndLaunchProjectile (Vector2.right);
 				}
 				if (posessionTimer > 900 || Input.GetKey (KeyCode.Space)) {
+					GetComponent<Animator> ().SetBool ("posessed", false);
 					posessed = false;
 					posessionTimer = 0;
 					jinn.SetActive (true);
@@ -75,6 +74,7 @@ public class AutoRangedAttack : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D info) {
 		if (info.gameObject.CompareTag("jinn")) {
 			posessed = true;
+			GetComponent<Animator> ().SetBool ("posessed", true);
 			info.gameObject.SetActive (false);
 			info.gameObject.GetComponent<JinnScript> ().posessing = true;
 		}
