@@ -112,7 +112,12 @@ public class EnemyScript : MonoBehaviour {
 
 
 
-			if (timer > POSESSION_LIMIT) {
+			if (timer > POSESSION_LIMIT || Input.GetKeyDown(KeyCode.Space)) {
+				weaponUp.tag = "enemy weapon";
+				weaponRight.tag = "enemy weapon";
+				weaponLeft.tag = "enemy weapon";
+				weaponDown.tag = "enemy weapon";
+
 				timer = 0;
 				posessed = false;
 
@@ -144,6 +149,11 @@ public class EnemyScript : MonoBehaviour {
 			summonerProps.changeMana (-1);
 			anim.SetBool ("posessed", true);
 			anim.SetTrigger ("start posess");
+
+			weaponUp.tag = "weapon";
+			weaponRight.tag = "weapon";
+			weaponLeft.tag = "weapon";
+			weaponDown.tag = "weapon";
 
 			hits += 1;
 
