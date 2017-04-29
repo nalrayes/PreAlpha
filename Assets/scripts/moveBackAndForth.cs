@@ -9,8 +9,13 @@ public class moveBackAndForth : MonoBehaviour {
 	bool posessed = false;
 	int timer = 0;
 	Color32 originalColor;
+
+	Animator anim;
 	// Use this for initialization
 	void Start () {
+
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("not stopped", true);
 		originalPos = transform.localPosition;
 //		direction = Vector3.up;
 

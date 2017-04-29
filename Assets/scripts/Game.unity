@@ -2087,8 +2087,9 @@ GameObject:
   - component: {fileID: 776634556}
   - component: {fileID: 776634560}
   - component: {fileID: 776634559}
-  - component: {fileID: 776634558}
   - component: {fileID: 776634557}
+  - component: {fileID: 776634558}
+  - component: {fileID: 776634561}
   m_Layer: 0
   m_Name: Diamond 1 (1)
   m_TagString: Untagged
@@ -2145,10 +2146,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5, y: -0.000000029802322}
-      - {x: 0, y: 0.5}
-      - {x: -0.5, y: 0}
-      - {x: -0.000000029802322, y: -0.5}
+    - - {x: 0.112288475, y: -0.2313091}
+      - {x: 0.31570405, y: -0.31467232}
+      - {x: 0.22466502, y: -0.10184209}
+      - {x: 0.43133196, y: -0.008860111}
+      - {x: 0.22913139, y: 0.08612585}
+      - {x: 0.31462702, y: 0.2815121}
+      - {x: 0.107813835, y: 0.1823268}
+      - {x: 0.015506427, y: 0.43354687}
+      - {x: -0.07752387, y: 0.18870816}
+      - {x: -0.28467655, y: 0.3043507}
+      - {x: -0.20044677, y: 0.068304226}
+      - {x: -0.42792925, y: -0.023316544}
+      - {x: -0.20403004, y: -0.105518185}
+      - {x: -0.28644022, y: -0.3325518}
+      - {x: -0.07948272, y: -0.23217186}
+      - {x: 0.019936562, y: -0.46234307}
 --- !u!50 &776634559
 Rigidbody2D:
   serializedVersion: 4
@@ -2209,6 +2222,23 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!95 &776634561
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776634555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdb2a0f0d379d4b07bb01dedfa862ee8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &799870906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,6 +2478,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 924199895}
+  - component: {fileID: 924199896}
   m_Layer: 0
   m_Name: Room 5
   m_TagString: Untagged
@@ -2473,6 +2504,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924199896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924199894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394bd2e1ed01f45a4bab8f2069c945c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &968726547
 GameObject:
   m_ObjectHideFlags: 0
@@ -4779,6 +4821,7 @@ GameObject:
   - component: {fileID: 1664548105}
   - component: {fileID: 1664548104}
   - component: {fileID: 1664548107}
+  - component: {fileID: 1664548108}
   m_Layer: 0
   m_Name: Diamond 1
   m_TagString: Untagged
@@ -4843,10 +4886,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5, y: -0.000000029802322}
-      - {x: 0, y: 0.5}
-      - {x: -0.5, y: 0}
-      - {x: -0.000000029802322, y: -0.5}
+    - - {x: 0.112288475, y: -0.2313091}
+      - {x: 0.31570405, y: -0.31467232}
+      - {x: 0.22466502, y: -0.10184209}
+      - {x: 0.43133196, y: -0.008860111}
+      - {x: 0.22913139, y: 0.08612585}
+      - {x: 0.31462702, y: 0.2815121}
+      - {x: 0.107813835, y: 0.1823268}
+      - {x: 0.015506427, y: 0.43354687}
+      - {x: -0.07752387, y: 0.18870816}
+      - {x: -0.28467655, y: 0.3043507}
+      - {x: -0.20044677, y: 0.068304226}
+      - {x: -0.42792925, y: -0.023316544}
+      - {x: -0.20403004, y: -0.105518185}
+      - {x: -0.28644022, y: -0.3325518}
+      - {x: -0.07948272, y: -0.23217186}
+      - {x: 0.019936562, y: -0.46234307}
 --- !u!212 &1664548106
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4899,6 +4954,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
+--- !u!95 &1664548108
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1664548102}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bdb2a0f0d379d4b07bb01dedfa862ee8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1674550513
 GameObject:
   m_ObjectHideFlags: 0
@@ -6278,7 +6350,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.55, y: -1.47, z: 10}
+  m_LocalPosition: {x: 6.14, y: -8.7, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1791935746}

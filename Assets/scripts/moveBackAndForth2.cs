@@ -14,8 +14,13 @@ public class moveBackAndForth2 : MonoBehaviour {
 	int timer = 0;
 	bool stopping = false;
 	Color32 originalColor;
+
+	Animator anim;
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("not stopped", true);
+
 		originalPos = transform.localPosition;
 		direction = Vector3.down;
 		jinn = GameObject.FindGameObjectWithTag ("jinn");
@@ -35,7 +40,7 @@ public class moveBackAndForth2 : MonoBehaviour {
 					direction = -1 * direction;
 				}
 			}
-			gameObject.transform.position += speed * direction * Time.deltaTime;
+			GetComponent<Rigidbody2D> ().MovePosition (transform.position + speed * direction * Time.deltaTime);
 		} else {
 			timer++;
 			if (timer > 90) {
