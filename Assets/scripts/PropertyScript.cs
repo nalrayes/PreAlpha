@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PropertyScript : MonoBehaviour {
 	
@@ -24,6 +25,7 @@ public class PropertyScript : MonoBehaviour {
 	void Update () {
 		if (currentHealth == 0) {
 			// death state? rn just die.
+			SceneManager.LoadScene(2);
 			gameObject.SetActive(false);
 		}
 	}
