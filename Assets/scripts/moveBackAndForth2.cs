@@ -6,6 +6,8 @@ public class moveBackAndForth2 : MonoBehaviour {
 	public Vector3 direction;
 	Vector3 originalPos;
 
+	public AudioClip switchingSound;
+
 	bool posessed;
 	GameObject jinn;
 
@@ -42,20 +44,24 @@ public class moveBackAndForth2 : MonoBehaviour {
 				if (direction.y == -1) {
 					if (transform.localPosition.y < -1 * originalPos.y) {
 						direction = -1 * direction;
+						SoundManager.instance.PlaySingle (switchingSound);
 					}
 				} else {
 					if (transform.localPosition.y > originalPos.y) {
 						direction = -1 * direction;
+						SoundManager.instance.PlaySingle (switchingSound);
 					}
 				}
 			} else if (!initialDirectionIsDown) {
 				if (direction.y == 1) {
 					if (transform.localPosition.y > -1 * originalPos.y) {
 						direction = -1 * direction;
+						SoundManager.instance.PlaySingle (switchingSound);
 					}
 				} else {
 					if (transform.localPosition.y < originalPos.y) {
 						direction = -1 * direction;
+						SoundManager.instance.PlaySingle (switchingSound);
 					}
 				}
 			}
