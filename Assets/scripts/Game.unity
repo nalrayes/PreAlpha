@@ -2087,9 +2087,9 @@ GameObject:
   - component: {fileID: 776634556}
   - component: {fileID: 776634560}
   - component: {fileID: 776634559}
-  - component: {fileID: 776634557}
   - component: {fileID: 776634558}
   - component: {fileID: 776634561}
+  - component: {fileID: 776634562}
   m_Layer: 0
   m_Name: Diamond 1 (1)
   m_TagString: Untagged
@@ -2104,24 +2104,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 776634555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.68, y: -1.39, z: 10}
+  m_LocalPosition: {x: 2.55, y: -1.53, z: 10}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 924199895}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &776634557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 776634555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c8ab446760b481cbb4635fe557185b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 1, z: 0}
 --- !u!60 &776634558
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2146,21 +2134,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.112288475, y: -0.2313091}
+    - - {x: 0.17729776, y: -0.39875692}
       - {x: 0.31570405, y: -0.31467232}
-      - {x: 0.22466502, y: -0.10184209}
+      - {x: 0.39605284, y: -0.15700111}
       - {x: 0.43133196, y: -0.008860111}
-      - {x: 0.22913139, y: 0.08612585}
+      - {x: 0.37884983, y: 0.16295537}
       - {x: 0.31462702, y: 0.2815121}
-      - {x: 0.107813835, y: 0.1823268}
+      - {x: 0.17282248, y: 0.39114422}
       - {x: 0.015506427, y: 0.43354687}
-      - {x: -0.07752387, y: 0.18870816}
+      - {x: -0.14647341, y: 0.37782645}
       - {x: -0.28467655, y: 0.3043507}
-      - {x: -0.20044677, y: 0.068304226}
+      - {x: -0.35804543, y: 0.20029299}
+      - {x: -0.3856244, y: 0.12937331}
       - {x: -0.42792925, y: -0.023316544}
-      - {x: -0.20403004, y: -0.105518185}
+      - {x: -0.37738785, y: -0.1547676}
       - {x: -0.28644022, y: -0.3325518}
-      - {x: -0.07948272, y: -0.23217186}
+      - {x: -0.14646196, y: -0.41537946}
       - {x: 0.019936562, y: -0.46234307}
 --- !u!50 &776634559
 Rigidbody2D:
@@ -2239,6 +2228,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &776634562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776634555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95bb7e99b1d9e4b2690c3688fe61a7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 1, z: 0}
 --- !u!1 &799870906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,7 +4039,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1256080593}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.58, z: 10}
+  m_LocalPosition: {x: 0.69, y: 1.47, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 924199895}
@@ -4836,7 +4837,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1664548102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.06, y: 1.3, z: 10}
+  m_LocalPosition: {x: 3.87, y: 1.53, z: 10}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 924199895}
@@ -4886,21 +4887,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.112288475, y: -0.2313091}
+    - - {x: 0.15243626, y: -0.3919015}
       - {x: 0.31570405, y: -0.31467232}
-      - {x: 0.22466502, y: -0.10184209}
+      - {x: 0.37321314, y: -0.16206408}
       - {x: 0.43133196, y: -0.008860111}
-      - {x: 0.22913139, y: 0.08612585}
+      - {x: 0.37366456, y: 0.13831854}
       - {x: 0.31462702, y: 0.2815121}
-      - {x: 0.107813835, y: 0.1823268}
+      - {x: 0.16803584, y: 0.36500058}
       - {x: 0.015506427, y: 0.43354687}
-      - {x: -0.07752387, y: 0.18870816}
+      - {x: -0.13373153, y: 0.37740406}
       - {x: -0.28467655, y: 0.3043507}
-      - {x: -0.20044677, y: 0.068304226}
+      - {x: -0.36505413, y: 0.13254118}
       - {x: -0.42792925, y: -0.023316544}
-      - {x: -0.20403004, y: -0.105518185}
+      - {x: -0.36060748, y: -0.17377011}
       - {x: -0.28644022, y: -0.3325518}
-      - {x: -0.07948272, y: -0.23217186}
+      - {x: -0.12364547, y: -0.3987864}
       - {x: 0.019936562, y: -0.46234307}
 --- !u!212 &1664548106
 SpriteRenderer:
@@ -4953,7 +4954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb7e99b1d9e4b2690c3688fe61a7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: -1, z: 0}
 --- !u!95 &1664548108
 Animator:
   serializedVersion: 3

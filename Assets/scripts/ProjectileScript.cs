@@ -12,7 +12,7 @@ public class ProjectileScript : MonoBehaviour {
 //		summoner = GameObject.FindGameObjectWithTag ("summoner");
 		projectileSpeed = 8f;
 		Vector2 direction = directionToMove;
-		Debug.Log (Vector2.left);
+//		Debug.Log (Vector2.left);
 		if (direction == Vector2.left) {
 			transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 180));
 		} else if (direction == Vector2.right) {
