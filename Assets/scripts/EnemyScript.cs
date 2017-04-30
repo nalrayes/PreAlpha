@@ -106,6 +106,7 @@ public class EnemyScript : MonoBehaviour {
 
 			GetComponentInChildren<EnemyAI> ().moving = moving;
 			GetComponentInChildren<EnemyAI> ().direction = direction;
+
 			gameObject.GetComponent<UseWeapon>().lastDirection = lastDirection;
 
 
