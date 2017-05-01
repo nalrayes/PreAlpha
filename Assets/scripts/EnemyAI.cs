@@ -47,7 +47,7 @@ public class EnemyAI : MonoBehaviour {
 			dist = Vector3.Distance (summoner.transform.position, transform.position);
 //			Debug.Log (dist);
 			if (!gameObject.GetComponent<EnemyScript>().posessed) {
-				if (dist <= 5f && dist > .5f) {
+				if (dist <= 3f && dist > .6f) {
 					moveToPlayer ();
 					if (timer > LIMIT) {
 						weaponScript.attackCondition = false;
@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour {
 							timer = 0;
 					}
 //					anim.SetBool ("attack", false);
-				} else if (dist <= .8f) {
+				} else if (dist <= .6f) {
 					if (timer > LIMIT) {
 						if (timer > LIMIT2) {
 							timer = 0;
@@ -83,11 +83,11 @@ public class EnemyAI : MonoBehaviour {
 						weaponScript.lastDirection = KeyCode.DownArrow;
 					} else if (difference == Vector3.left) {
 						
-						direction = 2;
+						direction = -2;
 
 						weaponScript.lastDirection = KeyCode.LeftArrow;
 					} else if (difference == Vector3.right) {
-						direction = -2;
+						direction = 2;
 
 						weaponScript.lastDirection = KeyCode.RightArrow;
 					}
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour {
 //					GetComponent<UseWeapon>().las
 
 					anim.SetTrigger ("attack");
-//					anim.SetInteger ("direction", direction);
+					anim.SetInteger ("direction", direction);
 
 
 
@@ -154,12 +154,13 @@ public class EnemyAI : MonoBehaviour {
 	 */
 	void moveToPlayer () {
 		Vector3 directionToMove = transform.position - summoner.transform.position;
+		directionToMove = Vector3.Normalize (directionToMove);
+
 		directionToMove.x = Mathf.Round (directionToMove.x);
 		directionToMove.y = Mathf.Round (directionToMove.y);
 
-		directionToMove = Vector3.Normalize (directionToMove);
 
-//		Debug.Log (directionToMove);
+		Debug.Log (directionToMove);
 		if (directionToMove == Vector3.up) {
 			moving = true;
 			direction = 1;

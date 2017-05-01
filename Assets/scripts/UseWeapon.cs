@@ -53,51 +53,7 @@ public class UseWeapon : MonoBehaviour {
 	void Update () {
 //		timer += 1;
 //		Debug.Log (attackCondition);
-		if (attackCondition) {
-			timer += 1;
-			lastWeapon.SetActive (false);
-
-			if (timer > FRAME_LIMIT) {
-				lastWeapon.SetActive (false);
-				timer = 0;
-			} else {
-				switch (lastDirection) {
-				case KeyCode.DownArrow:
-					lastWeapon = weaponDown;
-
-//					anim.SetInteger ("direction", -1);
-
-					break;
-				case KeyCode.UpArrow:
-					lastWeapon = weaponUp;
-
-//					anim.SetInteger ("direction", 1);
-
-					break;
-				case KeyCode.LeftArrow:
-					lastWeapon = weaponLeft;
-
-//					anim.SetInteger ("direction", 2);
-
-					break;
-				case KeyCode.RightArrow:
-					lastWeapon = weaponRight;
-
-//					anim.SetInteger ("direction", -2);
-
-					break;
-				default:
-					lastWeapon = weaponUp;
-
-//					anim.SetInteger ("direction", 1);
-
-					break;
-				}
-				anim.SetTrigger ("attack");
-				lastWeapon.SetActive (true);
-
-			}
-		} else if (gameObject.GetComponent<EnemyScript> ().posessed) {
+		 if (gameObject.GetComponent<EnemyScript> ().posessed) {
 			attackTimer += 1;
 			if (Input.GetKey (KeyCode.Q)) {
 				lastWeapon.SetActive (false);

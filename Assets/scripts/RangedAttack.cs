@@ -15,11 +15,13 @@ public class RangedAttack : MonoBehaviour {
 	bool canAttack;
 	int timer = 0;
 
-	int LIMIT = 10;
+	int LIMIT = 25;
 
 	Animator anim;
 
 	public AudioClip attackSound;
+
+	public AudioClip noAttackSound;
 
 	// Use this for initialization
 	void Start () {
@@ -83,6 +85,11 @@ public class RangedAttack : MonoBehaviour {
 				}
 				canAttack = false;
 			} else {
+				if (timer > 10) {
+					if (Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.UpArrow) || Input.GetKey (KeyCode.DownArrow)) {
+						SoundManager.instance.PlaySingle (noAttackSound);
+					}
+				}
 				timer += 1;
 				if (timer > LIMIT) {
 					canAttack = true;

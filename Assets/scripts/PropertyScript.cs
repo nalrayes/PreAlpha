@@ -65,7 +65,7 @@ public class PropertyScript : MonoBehaviour {
 		} else if (item.gameObject.CompareTag ("weapon") || item.gameObject.CompareTag("enemy weapon")) {
 			int damage = item.gameObject.GetComponent<DamageScript> ().damage;
 			changeHealth (-1 * damage);
-//			Debug.Log ("ow");
+			Debug.Log ("ow");
 
 			SoundManager.instance.PlaySingle (getHit);
 

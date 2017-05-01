@@ -53,24 +53,28 @@ public class UISprite : MonoBehaviour {
 	}
 
 	public void lowerHealth() {
+		
 		healthBar.transform.localScale = new Vector3(currentScaleHealthx - amountToSubtractHealth, currentScaleHealthy, 1);
 	}
 
 	public void recoverMana(float amt) {
 		if (currentScaleManax + maxScaleManax * amt > maxScaleManax) {
 			currentScaleManax = maxScaleManax;
-			manaBar.transform.localScale = new Vector3 (maxScaleManax, currentScaleManay, 1);
+		} else if (currentScaleManax + maxScaleManax * amt < 0) {
+			currentScaleManax = 0;
 		} else {
 			currentScaleManax = currentScaleManax + maxScaleManax * amt;
-			manaBar.transform.localScale = new Vector3 (currentScaleManax, currentScaleManay, 1);
 			Debug.Log ("that's right im in it");
 		}
+		manaBar.transform.localScale = new Vector3 (currentScaleManax, currentScaleManay, 1);
 	}
 
 	public void recoverHealth(float amt) {
 		if (currentScaleHealthx + maxScaleHealthx * amt > maxScaleHealthx) {
 			currentScaleHealthx = maxScaleHealthx;
 			healthBar.transform.localScale = new Vector3 (maxScaleHealthx, currentScaleHealthy, 1);
+		} else if (currentScaleHealthx + maxScaleHealthx < 0) {
+			currentScaleHealthx = 0;
 		} else {
 			currentScaleHealthx = currentScaleHealthx + maxScaleHealthx * amt;
 			healthBar.transform.localScale = new Vector3 (currentScaleHealthx + maxScaleHealthx * amt, currentScaleHealthy, 1);
