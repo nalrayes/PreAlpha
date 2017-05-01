@@ -4993,6 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posessed: 0
+  fireBoom: {fileID: 8300000, guid: 559c08e07bd7643b091d2ff59e992195, type: 3}
 --- !u!4 &1426744704 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4356939856789270, guid: 6206b3fbf9f7f4974b8ae93511f81ca0,

@@ -64,6 +64,15 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 		if (hits >= TO_KILL) {
 			//ded
+			timer = 0;
+			posessed = false;
+
+			anim.SetTrigger ("unposessed");
+			anim.SetBool ("posessed", false);
+
+			jinnScript.posessing = false;
+			jinn.SetActive (true);
+
 			this.gameObject.SetActive (false);
 			summonerProps.changeMana (3);
 			summonerProps.changeHealth (5);

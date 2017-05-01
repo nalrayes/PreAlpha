@@ -10,6 +10,8 @@ public class FireScript : MonoBehaviour {
 
 	GameObject jinn;
 
+	public AudioClip fireBoom; 
+
 	// Use this for initialization
 	void Start () {
 		jinn = GameObject.Find ("Circle");
@@ -39,10 +41,12 @@ public class FireScript : MonoBehaviour {
 			posessed = true;
 			GetComponent<Animator> ().SetBool ("posessed", true);
 		} else if (thing.gameObject.CompareTag ("summoner")) {
+			SoundManager.instance.PlaySingle (fireBoom);
 			// do dmg
 			thing.GetComponent<PropertyScript>().changeHealth(-1);
 		} else if (thing.gameObject.CompareTag ("enemy")) {
 			//kill
+			SoundManager.instance.PlaySingle (fireBoom);
 			thing.GetComponent<EnemyScript>().hits  = 2;
 		}
 	}
