@@ -15,20 +15,20 @@ public class replenishShit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timer = 501;
+		timer = 2001;
 
 		anim = this.GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (timer == 500) {
+		if (timer == 2000) {
 			anim.SetTrigger ("fill");
 			SoundManager.instance.PlaySingle (available);
 			timer++;
 			endTimer = 0;
 		} 
-		if (timer < 500) {
+		if (timer < 2000) {
 			if (endTimer <= 20) {	
 				endTimer++;
 			} 
@@ -39,7 +39,7 @@ public class replenishShit : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D info) {
 		
 		if (info.gameObject.CompareTag ("summoner")) {
-			if (timer >= 500) {
+			if (timer >= 2000) {
 				SoundManager.instance.PlaySingle (use);
 				info.gameObject.GetComponent<PropertyScript> ().changeMana (5);
 				info.gameObject.GetComponent<PropertyScript> ().changeHealth (5);

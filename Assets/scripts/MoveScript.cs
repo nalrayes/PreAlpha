@@ -86,7 +86,7 @@ public class MoveScript : MonoBehaviour {
 			timer += 1;
 			summoningTimer += 1;
 			if (summoningTimer % 50 == 0)
-				gameObject.GetComponent<PropertyScript> ().changeMana (-1);
+				gameObject.GetComponent<PropertyScript> ().changeMana (-2);
 			if (gameObject.GetComponent<PropertyScript> ().currentMana < 0) {
 				jinn.SetActive (false);
 				return;

@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PropertyScript : MonoBehaviour {
 	
-	public int MAX_HEALTH;
-	public int MAX_MANA;
+	public float MAX_HEALTH;
+	public float MAX_MANA;
 
-	public int currentMana;
-	public int currentHealth;
+	public float currentMana;
+	public float currentHealth;
 
 	public AudioClip getHit;
 
@@ -30,7 +30,7 @@ public class PropertyScript : MonoBehaviour {
 		}
 	}
 
-	public void changeHealth(int amt) {
+	public void changeHealth(float amt) {
 		if (currentHealth + amt > MAX_HEALTH) {
 			currentHealth = MAX_HEALTH;
 		} else if (currentHealth + amt < 0) {
@@ -43,7 +43,7 @@ public class PropertyScript : MonoBehaviour {
 		printall ();
 	}
 
-	public void changeMana(int amt) {
+	public void changeMana(float amt) {
 		if (currentMana + amt > MAX_MANA) {
 			currentMana = MAX_MANA;
 		} else if (currentMana + amt < 0) {
