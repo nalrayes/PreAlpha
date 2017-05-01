@@ -56,6 +56,8 @@ public class EnemyScript : MonoBehaviour {
 //		Debug.Log (weaponLeft);
 //		Debug.Log (weaponRight);
 		summonerProps = GameObject.FindGameObjectWithTag ("summoner").gameObject.GetComponent<PropertyScript> ();
+
+
 	}
 
 	// Update is called once per frame
@@ -136,12 +138,22 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
-		if (collisionInfo.gameObject.CompareTag("weapon")) {
+		if (collisionInfo.gameObject.CompareTag("weapon") || collisionInfo.gameObject.CompareTag("enemy weapon")) {
 //			this.GetComponent<SpriteRenderer> ().color = Color.red;
 
 			hits += 1;
 			if (hits >= TO_KILL) {
 				//ded
+				if (posessed) {
+					timer = 0;
+					posessed = false;
+
+					anim.SetTrigger ("unposessed");
+					anim.SetBool ("posessed", false);
+
+					jinnScript.posessing = false;
+					jinn.SetActive (true);
+				}
 				this.gameObject.SetActive (false);
 				summonerProps.changeMana (3);
 				summonerProps.changeHealth (5);

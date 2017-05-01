@@ -138,12 +138,12 @@ public class EnemyAI : MonoBehaviour {
 					feetAnim.SetInteger ("direction", direction);
 				}
 			} else {
-				if (timer > LIMIT) {
-					weaponScript.attackCondition = false;
-					if (timer > LIMIT2) {
-						timer = 0;
-					}
-				}
+//				if (timer > LIMIT) {
+//					weaponScript.attackCondition = false;
+//					if (timer > LIMIT2) {
+//						timer = 0;
+//					}
+//				}
 			}
 		}
 	}

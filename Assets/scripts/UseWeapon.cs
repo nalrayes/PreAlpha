@@ -56,7 +56,7 @@ public class UseWeapon : MonoBehaviour {
 		 if (gameObject.GetComponent<EnemyScript> ().posessed) {
 			attackTimer += 1;
 			if (Input.GetKey (KeyCode.Q)) {
-				lastWeapon.SetActive (false);
+//				lastWeapon.SetActive (false);
 				attackTimer = 0;
 
 				if (attackTimer > FRAME_LIMIT) {
@@ -78,13 +78,13 @@ public class UseWeapon : MonoBehaviour {
 					case KeyCode.LeftArrow:
 						lastWeapon = weaponLeft;
 
-						anim.SetInteger ("direction", 2);
+						anim.SetInteger ("direction", -2);
 
 						break;
 					case KeyCode.RightArrow:
 						lastWeapon = weaponRight;
 
-						anim.SetInteger ("direction", -2);
+						anim.SetInteger ("direction", 2);
 
 						break;
 					default:
@@ -94,6 +94,7 @@ public class UseWeapon : MonoBehaviour {
 
 						break;
 					}
+					Debug.Log (lastDirection);
 					anim.SetTrigger ("attack as jinn");
 					lastWeapon.SetActive (true);
 
