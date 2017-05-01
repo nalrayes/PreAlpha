@@ -22,6 +22,7 @@ public class moveBackAndForth2 : MonoBehaviour {
 	bool initialDirectionIsDown;
 	// Use this for initialization
 	void Start () {
+		enabled = false;
 		anim = GetComponent<Animator> ();
 		anim.SetBool ("not stopped", true);
 
@@ -89,5 +90,13 @@ public class moveBackAndForth2 : MonoBehaviour {
 		} else {
 			stopping = false;
 		}
+	}
+
+	void OnBecameVisible() {
+		enabled = true;
+	}
+
+	void OnBecameInvisible() {
+		enabled = false;
 	}
 }
