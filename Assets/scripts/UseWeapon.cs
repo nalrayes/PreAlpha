@@ -66,31 +66,31 @@ public class UseWeapon : MonoBehaviour {
 					case KeyCode.DownArrow:
 						lastWeapon = weaponDown;
 
-						anim.SetInteger ("direction", -1);
+//						anim.SetInteger ("direction", -1);
 
 						break;
 					case KeyCode.UpArrow:
 						lastWeapon = weaponUp;
 
-						anim.SetInteger ("direction", 1);
+//						anim.SetInteger ("direction", 1);
 
 						break;
 					case KeyCode.LeftArrow:
 						lastWeapon = weaponLeft;
 
-						anim.SetInteger ("direction", -2);
+//						anim.SetInteger ("direction", -2);
 
 						break;
 					case KeyCode.RightArrow:
 						lastWeapon = weaponRight;
 
-						anim.SetInteger ("direction", 2);
+//						anim.SetInteger ("direction", 2);
 
 						break;
 					default:
 						lastWeapon = weaponUp;
 
-						anim.SetInteger ("direction", 1);
+//						anim.SetInteger ("direction", 1);
 
 						break;
 					}
