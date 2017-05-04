@@ -66,16 +66,17 @@ public class EnemyScript : MonoBehaviour {
 			//ded
 			timer = 0;
 			posessed = false;
+			this.gameObject.SetActive (false);
 
 			anim.SetTrigger ("unposessed");
 			anim.SetBool ("posessed", false);
 
-			jinnScript.posessing = false;
-			jinn.SetActive (true);
-
 			this.gameObject.SetActive (false);
 			summonerProps.changeMana (3);
 			summonerProps.changeHealth (5);
+
+			jinnScript.posessing = false;
+			jinn.SetActive (true);
 		}
 //		Debug.Log (weaponUp);
 //		Debug.Log (weaponDown);
@@ -149,7 +150,7 @@ public class EnemyScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collisionInfo) {
 		if (collisionInfo.gameObject.CompareTag("weapon") || collisionInfo.gameObject.CompareTag("enemy weapon")) {
 //			this.GetComponent<SpriteRenderer> ().color = Color.red;
-
+			Debug.Log(collisionInfo.gameObject.tag);
 			hits += 1;
 			if (hits >= TO_KILL) {
 				//ded

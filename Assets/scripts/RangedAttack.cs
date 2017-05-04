@@ -15,7 +15,7 @@ public class RangedAttack : MonoBehaviour {
 	bool canAttack;
 	int timer = 0;
 
-	int LIMIT = 25;
+	int LIMIT = 15;
 
 	Animator anim;
 
@@ -44,6 +44,7 @@ public class RangedAttack : MonoBehaviour {
 //			newProjectile.transform.position = transform.position;
 //			newProjectile.GetComponent<ProjectileScript>().directionToMove = (Vector3)toMouseDir;
 //		}
+		Debug.Log(moveScript.getSummoning());
 		if (!moveScript.getSummoning()) {
 			if (canAttack) {
 				if (Input.GetKey(KeyCode.DownArrow)) {

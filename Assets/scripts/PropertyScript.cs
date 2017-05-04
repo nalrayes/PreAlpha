@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PropertyScript : MonoBehaviour {
 	
-	public float MAX_HEALTH;
+	public float MAX_HEALTH = 5;
 	public float MAX_MANA;
 
 	public float currentMana;
@@ -33,6 +33,7 @@ public class PropertyScript : MonoBehaviour {
 	public void changeHealth(float amt) {
 		if (currentHealth + amt > MAX_HEALTH) {
 			currentHealth = MAX_HEALTH;
+			amt = MAX_HEALTH - currentHealth;
 		} else if (currentHealth + amt < 0) {
 			currentHealth = 0;
 		} else {
@@ -46,6 +47,7 @@ public class PropertyScript : MonoBehaviour {
 	public void changeMana(float amt) {
 		if (currentMana + amt > MAX_MANA) {
 			currentMana = MAX_MANA;
+//			amt = MAX_MANA - currentMana;
 		} else if (currentMana + amt < 0) {
 			currentMana = 0;
 		} else {

@@ -6656,6 +6656,7 @@ GameObject:
   - component: {fileID: 2123538341}
   - component: {fileID: 2123538340}
   - component: {fileID: 2123538339}
+  - component: {fileID: 2123538344}
   m_Layer: 13
   m_Name: Summoner
   m_TagString: summoner
@@ -6710,7 +6711,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.87, y: -1.5, z: 10}
+  m_LocalPosition: {x: -4.11, y: -1.79, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1791935746}
@@ -6723,7 +6724,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6753,7 +6754,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -6844,77 +6845,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 2123538343}
-    m_ColliderPaths:
-    - - X: 1479065
-        Y: 3992149
-      - X: -1878004
-        Y: 3992149
-      - X: -1878004
-        Y: 1005111
-      - X: 1479065
-        Y: 1005111
-  - m_Collider: {fileID: 2123538342}
-    m_ColliderPaths:
-    - - X: -851588
-        Y: -1970968
-      - X: -3578753
-        Y: -1970968
-      - X: -3578753
-        Y: -3719188
-      - X: -851588
-        Y: -3719188
-  - m_Collider: {fileID: 2123538341}
-    m_ColliderPaths:
-    - - X: 2864859
-        Y: 359686
-      - X: -9281
-        Y: 359686
-      - X: -9281
-        Y: -1661493
-      - X: 2864859
-        Y: -1661493
-  - m_Collider: {fileID: 2123538340}
-    m_ColliderPaths:
-    - - X: 3494768
-        Y: -1656013
-      - X: -72271
-        Y: -1656013
-      - X: -72271
-        Y: -2417380
-      - X: 3494768
-        Y: -2417380
-  - m_Collider: {fileID: 2123538333}
-    m_ColliderPaths:
-    - - X: 2165420
-        Y: 989593
-      - X: -2551493
-        Y: 989593
-      - X: -2551493
-        Y: -4053985
-      - X: 2165420
-        Y: -4053985
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 0.1479065, y: 0.3992149}
-      - {x: -0.1878004, y: 0.3992149}
-      - {x: -0.1878004, y: 0.100511104}
-      - {x: 0.1479065, y: 0.100511104}
-    - - {x: 0.216542, y: -0.241738}
-      - {x: 0.3494768, y: -0.241738}
-      - {x: 0.3494768, y: -0.1656013}
-      - {x: 0.2864859, y: -0.1656013}
-      - {x: 0.2864859, y: 0.0359686}
-      - {x: 0.216542, y: 0.0359686}
-      - {x: 0.216542, y: 0.098959304}
-      - {x: -0.2551493, y: 0.098959304}
-      - {x: -0.2551493, y: -0.19709681}
-      - {x: -0.35787532, y: -0.19709681}
-      - {x: -0.35787532, y: -0.3719188}
-      - {x: -0.2551493, y: -0.3719188}
-      - {x: -0.2551493, y: -0.40539852}
-      - {x: 0.216542, y: -0.40539852}
+    m_Paths: []
   m_VertexDistance: 0.0005
 --- !u!61 &2123538340
 BoxCollider2D:
@@ -6922,7 +6855,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6947,7 +6880,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6972,7 +6905,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -6997,7 +6930,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2123538330}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -7016,3 +6949,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33570695, y: 0.2987038}
   m_EdgeRadius: 0
+--- !u!58 &2123538344
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2123538330}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.030959725, y: -0.042569518}
+  serializedVersion: 2
+  m_Radius: 0.40712094
